@@ -1,24 +1,27 @@
 import React from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-import Login from "./components/login.component";
-//import Footer from "./components/Footer";
+import Navbar from "./components/navbar.component.js";
+import ExercisesList from "./components/exercises-list.component";
+//import CreateExercise from "./components/create-exercise.component";
+import CreateUser from "./components/create-user.component";
+import EditExercises from "./components/edit-exercise.component";
+import CreateSeller from "./components/create-seller.component";
+
 function App() {
-  return (<Router>
-    <div className="App">
-      
-
-      <div className="auth-wrapper">
-        <div className="auth-inner">
-          <Switch>
-            <Route exact path='/' component={Login} />
-            <Route path="/sign-in" component={Login} />
-          </Switch>
-        </div>
+  return (
+    <Router>
+      <div className = "container">
+        <Navbar />
+        <br/>
+        <Route path ="/" exact component = {ExercisesList} />
+        <Route path ="/edit/:id" component = {EditExercises} />
+        <Route path ="/user" component = {CreateUser} />
+        <Route path = "/seller" component = {CreateSeller} />  
       </div>
-    </div></Router>
+    </Router>
+
   );
 }
 
