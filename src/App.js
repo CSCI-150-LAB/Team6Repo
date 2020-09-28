@@ -1,27 +1,40 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css';
 
-import Navbar from "./components/navbar.component.js";
-import ExercisesList from "./components/exercises-list.component";
-//import CreateExercise from "./components/create-exercise.component";
-import CreateUser from "./components/create-user.component";
-import EditExercises from "./components/edit-exercise.component";
-import CreateSeller from "./components/create-seller.component";
+import { Form, FormGroup, Label, Input }
+  from 'reactstrap';
+
+import Button from 'react-bootstrap/Button'
 
 function App() {
   return (
-    <Router>
-      <div className = "container">
-        <Navbar />
-        <br/>
-        <Route path ="/" exact component = {ExercisesList} />
-        <Route path ="/edit/:id" component = {EditExercises} />
-        <Route path ="/user" component = {CreateUser} />
-        <Route path = "/seller" component = {CreateSeller} />  
+    <Form className="sign-up-form">
+      <h1>
+        <span className="font-weight-bold"> AuthenticChef</span> 
+      </h1>
+      <h2 className = "text-center"> Signup: User </h2>
+      <FormGroup>
+        <Label>Name </Label>
+        <Input type = "name" placeholder = "Your Full Name" />
+      </FormGroup>
+      <FormGroup>
+        <Label>Username </Label>
+        <Input type = "username" placeholder = "Choose a username" />
+      </FormGroup>
+      <FormGroup>
+        <Label>Password </Label>
+        <Input type = "password" placeholder = "Choose a password" />
+      </FormGroup>
+      <FormGroup>
+        <Label>Email </Label>
+        <Input type = "email" placeholder = "Your email" />
+      </FormGroup>
+      <Button className="btn-block" variant="outline-success"> {'Sign Up'} </Button> 
+      <div className = "text-center">
+        or Signup using your social account
       </div>
-    </Router>
 
+    </Form>
   );
 }
 
