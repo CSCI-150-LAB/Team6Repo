@@ -1,40 +1,26 @@
 import React from 'react';
 import './App.css';
+import Nav from './components/nav';
+import Home from './components/home';
+import HowItWorks from './components/howitworks';
+import Signup from './components/signup';
 
-import { Form, FormGroup, Label, Input }
-  from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Button from 'react-bootstrap/Button'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <Form className="sign-up-form">
-      <h1>
-        <span className="font-weight-bold"> AuthenticChef</span> 
-      </h1>
-      <h2 className = "text-center"> Signup: User </h2>
-      <FormGroup>
-        <Label>Name </Label>
-        <Input type = "name" placeholder = "Your Full Name" />
-      </FormGroup>
-      <FormGroup>
-        <Label>Username </Label>
-        <Input type = "username" placeholder = "Choose a username" />
-      </FormGroup>
-      <FormGroup>
-        <Label>Password </Label>
-        <Input type = "password" placeholder = "Choose a password" />
-      </FormGroup>
-      <FormGroup>
-        <Label>Email </Label>
-        <Input type = "email" placeholder = "Your email" />
-      </FormGroup>
-      <Button className="btn-block" variant="outline-success"> {'Sign Up'} </Button> 
-      <div className = "text-center">
-        or Signup using your social account
+    <Router>
+      <div className="App">
+        <Nav />
+        <Route path = "/home" from component = {Home} />
+        <Route path = "/howitworks" from component = {HowItWorks} />
+        <Route path = "/signup" from component = {Signup} />
       </div>
-
-    </Form>
+    </Router>
+    
+    
   );
 }
 
