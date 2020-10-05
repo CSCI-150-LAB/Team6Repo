@@ -11,6 +11,7 @@ import CreateSeller from "./components/create-seller.component";
 import home from "./components/home"
 import HowitWorks from "./components/howitworks"; 
 import SignUpUser from "./components/signup"; 
+import SignIn from "./components/signin";
 
 function App() {
   return (
@@ -18,13 +19,13 @@ function App() {
         <Nav />
         <br/>
         <Route path = "/home" exact component = {home} /> 
-        {/* <Route path ="/" exact component = {ExercisesList} />  NOT USED ANYMORE :)*/}
+        <Route path = "/" exact component = {home} />
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
-        <Route path = "/signup" component = {SignUpUser} />
+        <Route path = "/usersignup" component = {SignUpUser} />
+        <Route path = "/signin" component = {SignIn} />
     </Router>
-
   );
 }
-
+/*  <Route path = "/signin" exact component = {SignIn} /> */
 export default App;

@@ -16,8 +16,9 @@ function navbar(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="signup">Sign up</Nav.Link>
+            <Nav.Link href="usersignup">Sign up</Nav.Link>
             <Nav.Link href="howitworks">How It Works</Nav.Link>
+            <Nav.Link href="signin">Sign in</Nav.Link>
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

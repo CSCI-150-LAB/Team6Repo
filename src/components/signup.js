@@ -64,7 +64,7 @@ export default class SignUpUser  extends Component{
         }
 
         console.log(user);
-
+        
         axios.post('http://localhost:5000/users/add',user)
             .then(res => console.log(res.data));
         this.setState({
@@ -74,6 +74,7 @@ export default class SignUpUser  extends Component{
             email: '',
             address: ''
         })
+        
         //window.location = '/usercreated';
     }
 
@@ -86,7 +87,7 @@ export default class SignUpUser  extends Component{
             <h2 className = "text-center"> Signup: User </h2>
             <FormGroup>
               <Label>Name </Label>
-              <Input type = "name" placeholder = "Your Full Name" onChange = {this.onChangeName}/>
+              <Input type = "name" placeholder = "Your Full Name" onChange = {this.onChangeName} />
             </FormGroup>
             <FormGroup>
               <Label>Username </Label>
@@ -94,15 +95,15 @@ export default class SignUpUser  extends Component{
             </FormGroup>
             <FormGroup>
               <Label>Password </Label>
-              <Input type = "password" placeholder = "Choose a password" onChange = {this.onChangePassword}/>
+              <Input type = "password" placeholder = "Choose a password" onChange = {this.onChangePassword} />
             </FormGroup>
             <FormGroup>
               <Label>Email </Label>
-              <Input type = "email" placeholder = "Your email" onChange = {this.onChangeEmail}/>
+              <Input type = "email" placeholder = "Your email"  onChange = {this.onChangeEmail}/>
             </FormGroup>
             <FormGroup>
               <Label>Address </Label>
-              <Input type = "address" placeholder = "Your address" onChange = {this.onChangeAddress}/>
+              <Input type = "address" placeholder = "Your address" onChange = {this.onChangeAddress} />
             </FormGroup>
             <Button className="btn-block" variant="outline-success" type = "submit"> {'Sign Up'} </Button> 
             <div className = "text-center">
