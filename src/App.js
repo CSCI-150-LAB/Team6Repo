@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
 import Nav from './components/nav';
-import Home from './components/home';
+import Carousel from './components/carousel';
+import Meals from './components/meals';
 import HowItWorks from './components/howitworks';
 import Signup from './components/signup';
 
@@ -14,7 +15,8 @@ function AuthenticChef() {
     <Router>
       <div className="App">
         <Nav />
-        <Route path = "/home" from component = {Home} />
+        <Route path = "/home" from component = {Carousel} />
+        <Route path = "/home" from component = {Meals} />
         <Route path = "/howitworks" from component = {HowItWorks} />
         <Route path = "/signup" from component = {Signup} />
       </div>
