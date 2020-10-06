@@ -11,6 +11,7 @@ import CreateSeller from "./components/create-seller.component";
 import home from "./components/home"
 import HowitWorks from "./components/howitworks"; 
 import SignUpUser from "./components/signup"; 
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Nav />
         <br/>
         <Route path = "/home" exact component = {home} /> 
+        <Route path = "/home" exact component = {Footer} /> 
         {/* <Route path ="/" exact component = {ExercisesList} />  NOT USED ANYMORE :)*/}
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
