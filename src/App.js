@@ -14,6 +14,7 @@ import SignUpUser from "./components/signup";
 import SignIn from "./components/signin";
 
 function App() {
+  //const [loginUsername,setLoginUsername] = useState("");
   return (
     <Router>
         <Nav />

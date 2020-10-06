@@ -1,6 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const passport = require("passport");
+const passportlocal = require("passport-local");
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
+const session = require ("express-session");
+const bodyParser = require ("body-parser");
 
 require('dotenv').config();
 
@@ -21,10 +27,11 @@ connection.once('open', () => {
 
 const usersRouter = require('./routes/users');
 const sellersRouter = require('./routes/sellers'); 
-
+//const loginRouter = require('./routes/login');
 
 app.use('/users', usersRouter);
 app.use('/sellers', sellersRouter); 
+//app.use('/login', loginRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
