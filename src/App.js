@@ -7,9 +7,9 @@ import Signup from './components/signup';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-function App() {
+function AuthenticChef() {
   return (
     <Router>
       <div className="App">
@@ -24,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default AuthenticChef;
