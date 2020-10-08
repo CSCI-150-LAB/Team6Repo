@@ -13,7 +13,7 @@ import Logo from "../images/logo.png";
 function navbar() {
   return (
     <Navbar className="navcolor" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="home">
       <img
         src={Logo}
         width="100"
