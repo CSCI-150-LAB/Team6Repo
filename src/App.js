@@ -5,7 +5,6 @@ import Carousel from './components/carousel';
 import Meals from './components/meals';
 import HowItWorks from './components/howitworks';
 import Signup from './components/signup';
-import Footer from './components/footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -20,7 +19,6 @@ function AuthenticChef() {
         <Route path = "/home" from component = {Meals} />
         <Route path = "/howitworks" from component = {HowItWorks} />
         <Route path = "/signup" from component = {Signup} />
-        <Footer />
       </div>
     </Router>
     

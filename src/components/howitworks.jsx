@@ -2,8 +2,11 @@ import React from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Food1 from "../images/img1.jpg";
-import Food2 from "../images/img2.jpg";
+//import Food1 from "../images/img1.jpg";
+import Food1 from "../images/cards/1.jpeg"
+//import Food2 from "../images/img2.jpg";
+import Food2 from "../images/cards/2.png";
+import Food3 from "../images/cards/3.png";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
@@ -63,7 +66,7 @@ function HowitWorks(){
           <Row className="pt-3 pb-5 align-items-center">
             <Col xs={12} md={6}>
               <Row className="justify-content-center mb-2 mr-2 ">
-                <Image className="food justify-content-end" alt="Food" src={Food1} thumbnail fluid />
+                <Image className="food justify-content-end" alt="Food" src={Food3} thumbnail fluid />
               </Row>
             </Col>
             <Col xs={12} md={6}>
