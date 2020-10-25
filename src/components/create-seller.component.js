@@ -107,7 +107,6 @@ export default class CreateSeller  extends Component{
             address: '',
             itemLinker : '',
             ethnicity: '',
-            //signUpDate: new Date(),
             aboutMe: '',
             certified: false,
         })

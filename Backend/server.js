@@ -1,12 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+<<<<<<< Updated upstream
 const passport = require("passport");
 const passportlocal = require("passport-local");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const session = require ("express-session");
 const bodyParser = require ("body-parser");
+=======
+const bodyParser = require('body-parser'); 
+const fileUpload = require('express-fileupload');
+>>>>>>> Stashed changes
 
 require('dotenv').config();
 
@@ -27,11 +32,23 @@ connection.once('open', () => {
 
 const usersRouter = require('./routes/users');
 const sellersRouter = require('./routes/sellers'); 
+<<<<<<< Updated upstream
 //const loginRouter = require('./routes/login');
 
 app.use('/users', usersRouter);
 app.use('/sellers', sellersRouter); 
 //app.use('/login', loginRouter);
+=======
+const adminRouter = require('./routes/admin');
+const imageRouter = require('./routes/image');
+
+app.use('/users', usersRouter);
+app.use('/sellers', sellersRouter); 
+app.use('/admin', adminRouter); 
+app.use('/images',imageRouter);
+
+//admin page localhost::5000/admin to access. 
+>>>>>>> Stashed changes
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

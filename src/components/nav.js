@@ -18,15 +18,20 @@ function navbar(){
           <Nav className="mr-auto">
             <Nav.Link href="usersignup">Sign up</Nav.Link>
             <Nav.Link href="howitworks">How It Works</Nav.Link>
+<<<<<<< Updated upstream
             <Nav.Link href="signin">Sign in</Nav.Link>
           </Nav>
           <Nav classname = "">
             
+=======
+            <Nav.Link href="imageUpload">Image Upload</Nav.Link>
+>>>>>>> Stashed changes
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-success">Search</Button>
           </Form>
+
         </Navbar.Collapse>
       </Navbar>
 
