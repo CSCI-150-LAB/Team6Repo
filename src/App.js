@@ -19,6 +19,7 @@ function App() {
         <Nav />
         <br/>
         <Route path = "/home" exact component = {home} /> 
+        <Route path = "/" exact component = {home} />
         <Route path = "/home" exact component = {Footer} /> 
         {/* <Route path ="/" exact component = {ExercisesList} />  NOT USED ANYMORE :)*/}
         <Route path = "/createSeller" component = {CreateSeller} />  

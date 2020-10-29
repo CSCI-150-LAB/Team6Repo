@@ -54,7 +54,7 @@ export default class SignUpUser  extends Component{
     }
     onSubmit(e){
         e.preventDefault();
-
+        const checkres ="";
         const user = {
             username: this.state.username,
             password: this.state.password,
@@ -66,7 +66,9 @@ export default class SignUpUser  extends Component{
         console.log(user);
 
         axios.post('http://localhost:5000/users/add',user)
-            .then(res => console.log(res.data));
+            .then((res) => console.log(res.data))
+            .then((checkres) => checkres = "User added")
+            .then(()=>window.location ='/usercreated');
         this.setState({
             username: '',
             password: '',
@@ -74,7 +76,8 @@ export default class SignUpUser  extends Component{
             email: '',
             address: ''
         })
-        //window.location = '/usercreated';
+        
+        
     }
 
     render() {
