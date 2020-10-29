@@ -1,11 +1,8 @@
-// database username matches username called.
-if (username == {usersInfo:<username>} )
-{
- // calls a specific user information that should already be in database.
-        {usersInfo: <username>}
-        
-}
 
-else {
-    // display error message. or redirect to different page?
+function seller_profile(Seller)
+{
+    {usersInfo: [{ Seller: <username></username>, db:<AuthenticChef></AuthenticChef>}]}
+    {usersInfo:[ {Seller: <email></email>, db:<AuthenticChef></AuthenticChef>}]}
+    {usersInfo: [{Seller:<phone></phone>, db: <AuthenticChef></AuthenticChef> }]}
+    {usersInfo:[{ Seller: <address></address>, db: <AuthenticChef></AuthenticChef>}]}
 }
