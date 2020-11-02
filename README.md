@@ -71,8 +71,6 @@ The user interface for the Seller, Buyer, and Administrator users are different.
 * [Redux](https://redux.js.org/) - State Container for our JS App
 
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
 ## Acknowledgments
 
 * Any documentation code that was used as a reference
