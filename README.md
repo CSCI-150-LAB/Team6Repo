@@ -55,7 +55,7 @@ There will be three users(**Admin, Sellers**, and **Buyers**): Both users will h
 
 
 
-**Interface:**
+### Interface:
 
 The user interface for the Seller, Buyer, and Administrator users are different. A search engine and food category section is required for buyers to navigate through the food options listed on the website. Database must hold and utilize User information, payment protocols, location system and data, and other important operations and data. Back end will be designed to manipulate the database data and operations. 
 
