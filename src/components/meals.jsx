@@ -153,9 +153,10 @@ function meals() {
           <div className="text-center">
             <Button variant="success">View All</Button>
           </div>
+          <br />
         </Col>
 
-        <br />
+        
       </Row>
     </>
   );
