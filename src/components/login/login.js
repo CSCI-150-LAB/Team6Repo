@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
@@ -24,6 +25,17 @@ const userData = {
       password: this.state.password
     };
 console.log(userData);
+axios.post('http://localhost:5000/routes/users/login', userData)
+    .then(res =>{ 
+      console.log(res.data)
+        if (res.data.success){
+          window.location = '/home';
+        }
+      }
+    ).catch(err =>{
+      alert('wrong email and password combination. Do it again xd');
+    })
+
   };
 render() {
     const { errors } = this.state;
