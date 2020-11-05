@@ -1,17 +1,13 @@
-import Slide1 from "./images/img1.jpg";
-import Slide2 from "./images/img2.jpg";
-import Slide3 from "./images/img3.jpg";
 import React from 'react';
 import '.././App.css';
 
-
 import Carousel from 'react-bootstrap/Carousel';
 
+import Slide1 from "./images/img1.jpg";
+import Slide2 from "./images/img2.jpg";
+import Slide3 from "./images/img3.jpg";
 
-//import Jumbotron from 'react-bootstrap/Jumbotron';
-//import Button from 'react-bootstrap/Button';
-
-function home(){
+function carousel(){
     return(
         <Carousel>
             <Carousel.Item>
@@ -21,8 +17,7 @@ function home(){
                 alt="Indian Food"
                 />
                 <Carousel.Caption>
-                <h1>Indian Food</h1>
-                <h3>Experience the diversity of India through amazing homemade food with locals!</h3>
+                <h3 className="carousel-text"><span>Experience the diversity of India through amazing homemade food with locals! </span></h3>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -33,8 +28,7 @@ function home(){
                 />
 
                 <Carousel.Caption>
-                <h1>Italian Food</h1>
-                <h3>Experience the diversity of Italy through amazing homemade food with locals!</h3>
+                <h3 className="carousel-text"><span>Experience the diversity of Italy through amazing homemade food with locals!</span></h3>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -45,12 +39,11 @@ function home(){
                 />
 
                 <Carousel.Caption>
-                <h1>Middle Eastern</h1>
-                <h3>Experience the diversity of Saudi Arabia through amazing homemade food with locals!</h3>
+                <h3 className="carousel-text"><span>Experience the diversity of Middle East through amazing homemade food! </span></h3>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
 
     );
 }
-export default home;
+export default carousel;

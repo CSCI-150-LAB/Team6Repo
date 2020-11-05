@@ -5,33 +5,25 @@ import Button from 'react-bootstrap/Button'
 
 import '../App.css'
 
-export default class SignUpUser  extends Component{
+export default class signUpUser  extends Component{
     
-    constructor(props){
+    constructor(props){ // creates empty user so that we can change it 
         super(props);
-
-        this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangeAddress = this.onChangeAddress.bind(this);
+        this.onChangeRole = this.onChangeRole.bind(this);
   
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            username : '',
             password : '',
             name     : '',
             email    : '',
-            address  : ''
+            role     : ''
         }
     }
     
-    onChangeUsername(e){
-        this.setState({
-        username: e.target.value
-        })
-    }
     onChangePassword(e){
       this.setState({
       password: e.target.value
@@ -47,38 +39,45 @@ export default class SignUpUser  extends Component{
       email: e.target.value
       })
     }
-    onChangeAddress(e){
+    onChangeRole(e){
       this.setState({
-      address: e.target.value
+        role: e.target.value
       })
     }
     onSubmit(e){
         e.preventDefault();
 
         const user = {
-            username: this.state.username,
+            name: this.state.name,
             password: this.state.password,
-            name:     this.state.name,
             email:    this.state.email,
-            address:  this.state.address
         }
 
         console.log(user);
-
-        axios.post('http://localhost:5000/users/add',user)
-            .then(res => console.log(res.data));
-        this.setState({
-            username: '',
-            password: '',
-            name:   '',
-            email: '',
-            address: ''
-        })
+        if(this.state.role === "buyer"){
+          axios.post('http://localhost:5000/users/add',user)
+              .then(res =>{
+                console.log(res.data)
+                if(res.data === "User added!"){
+                  window.location = '/usercreated';
+                }
+                else{
+                  window.location = '/usernotcreated';
+                }
+              
+              });
+        }
+        else if(this.state.role === "seller"){
+          axios.post('http://localhost:5000/seller/add',user)
+          .then(res => console.log(res.data)).then();
+        }
+        
         //window.location = '/usercreated';
     }
 
     render() {
         return (
+          <div>
             <Form onSubmit = {this.onSubmit} className="sign-up-form">
             <h1>
               <span className="font-weight-bold"> AuthenticChef</span> 
@@ -89,10 +88,6 @@ export default class SignUpUser  extends Component{
               <Input type = "name" placeholder = "Your Full Name" onChange = {this.onChangeName}/>
             </FormGroup>
             <FormGroup>
-              <Label>Username </Label>
-              <Input type = "username" placeholder = "Choose a username" onChange = {this.onChangeUsername} />
-            </FormGroup>
-            <FormGroup>
               <Label>Password </Label>
               <Input type = "password" placeholder = "Choose a password" onChange = {this.onChangePassword}/>
             </FormGroup>
@@ -100,15 +95,21 @@ export default class SignUpUser  extends Component{
               <Label>Email </Label>
               <Input type = "email" placeholder = "Your email" onChange = {this.onChangeEmail}/>
             </FormGroup>
-            <FormGroup>
-              <Label>Address </Label>
-              <Input type = "address" placeholder = "Your address" onChange = {this.onChangeAddress}/>
-            </FormGroup>
             <Button className="btn-block" variant="outline-success" type = "submit"> {'Sign Up'} </Button> 
+            <div class="form-group">
+						<label for="role">Role</label>
+						<select name="role" id="role" onChange= {this.onChangeRole} >
+							<option value="buyer" >buyer</option>
+							<option value="seller" >seller</option>
+						</select>
+					</div>
             <div className = "text-center">
               or Signup using your social account
             </div>
           </Form>
+            
+          </div>
+          
         )
       }
 }

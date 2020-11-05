@@ -2,30 +2,45 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//import Navbar from "./components/navbar.component.js";
 import Nav from "./components/nav.js"; 
-//import ExercisesList from "./components/exercises-list.component";
-//import CreateExercise from "./components/create-exercise.component";
-//import EditExercises from "./components/edit-exercise.component";
 import CreateSeller from "./components/create-seller.component";
-import home from "./components/home"
+
 import HowitWorks from "./components/howitworks"; 
-import SignUpUser from "./components/signup"; 
+//import SignUpUser from "./components/signup"; 
 import Footer from "./components/Footer";
+
+//import signupnewUser from "./components/signupnewUser"; 
+import Register from "./components/register/register"; 
+import Login from "./components/login/login";
+
+//future features
+//import Join from "./components/Join";
+//import Chat from "./components/Chat";
+
+import Meals from './components/meals';
+import Carousel from './components/carousel';
+//import Provider from 'react-redux';
+//import store from  './store'; 
 
 function App() {
   return (
+    
     <Router>
         <Nav />
         <br/>
-        <Route path = "/home" exact component = {home} /> 
+        <Route path = "/home" exact component = {Carousel} /> 
         <Route path = "/home" exact component = {Footer} /> 
-        {/* <Route path ="/" exact component = {ExercisesList} />  NOT USED ANYMORE :)*/}
+        <Route path = "/home" exact component = {Meals} />
+        
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
-        <Route path = "/signup" component = {SignUpUser} />
-    </Router>
+        
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login" component={Login} />
 
+ 
+    </Router>
+   
   );
 }
 
