@@ -18,6 +18,8 @@ function navbar(){
           <Nav className="mr-auto">
             <Nav.Link href="signup">Sign up</Nav.Link>
             <Nav.Link href="howitworks">How It Works</Nav.Link>
+            <Nav.Link href="tstupload">Test Upload</Nav.Link>
+            <Nav.Link href="Login">Test Login</Nav.Link>
           </Nav>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />

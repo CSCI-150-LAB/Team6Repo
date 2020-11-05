@@ -66,7 +66,17 @@ export default class SignUpUser  extends Component{
         console.log(user);
 
         axios.post('http://localhost:5000/users/add',user)
-            .then(res => console.log(res.data));
+            .then(res => {
+              console.log(res.data)
+              if(res.data == "User added!"){
+                window.location = '/usercreated';
+              }
+              else{
+                window.location = '/usernotcreated';
+              }
+            
+            }
+            );
         this.setState({
             username: '',
             password: '',
@@ -74,7 +84,7 @@ export default class SignUpUser  extends Component{
             email: '',
             address: ''
         })
-        //window.location = '/usercreated';
+        window.location = '/usernotcreated';
     }
 
     render() {
