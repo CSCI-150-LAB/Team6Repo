@@ -35,7 +35,14 @@
   height: 100%;
   color:darkgreen;
 }
-
+.NavName{
+  text-align: center;
+  font-size: large;
+  font-family: cursive;
+  font-weight: 900;
+  color: darkgreen;
+  animation-timing-function: ease-in;
+}
 .custom-img {
   height: 100vh;
   object-fit: cover;
