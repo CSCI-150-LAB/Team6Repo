@@ -13,10 +13,11 @@ router.route('/find').post((req, res) => {
   const newSearch = new Search({search,certified});
 
 
-  // need to display results of search here. DONT ADD AND SAVE.
- // newSeller.save() 
-  //  .then(() => res.json('Seller added!'))
-  //  .catch(err => res.status(400).json('Error: ' + err));
+  {usersInfo: [{Search: <food></food>, db: <AuthenticChef></AuthenticChef>}]} 
+  {usersInfo: [{Search: <discription></discription>, db: <AuthenticChef></AuthenticChef>}]}
+  // returns the food and discription of the products searched. double check if there being put into the database as users or not. 
+  // Also check if this works for multiple results or not.
+
 });
 
 module.exports = router;
