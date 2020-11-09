@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 
 //import Image from "react-bootstrap/Image";
-import Logo from "../images/NewLogo.png";
+import Logo from "./images/NewLogo.png";
 
 function navbar() {
   return (
