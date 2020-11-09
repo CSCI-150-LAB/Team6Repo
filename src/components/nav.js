@@ -26,7 +26,8 @@ function navbar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="signup">Register or Log in</Nav.Link>
+          <Nav.Link href="signup">Register</Nav.Link>
+          <Nav.Link href="login">Log in</Nav.Link>
           <Nav.Link href="howitworks">How It Works</Nav.Link>
         </Nav>
         <Form inline>

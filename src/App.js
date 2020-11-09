@@ -37,7 +37,7 @@ function App() {
         <Route path = "/usernotcreated" exact component = {UserNotCreated} />
         <Route path = "/login" exact component = {Login} />
         <Route path = "/tstupload" exact component = {ImageUpload} />
-        <Footer className = "bottom:0" />
+        <Footer  />
     </Router>
   );
 }
