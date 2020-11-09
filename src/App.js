@@ -18,7 +18,7 @@ import UserCreated from './components/usercreated'
 import UserNotCreated from './components/usernotcreated'
 import ImageUpload from './components/imageupload.component.js';
 import Login from './components/login.components.js';
-import meals from'./components/meals'
+import meals from'./components/meals.jsx'
 function App() {
   //const [loginUsername,setLoginUsername] = useState("");
   return (
@@ -37,7 +37,7 @@ function App() {
         <Route path = "/usernotcreated" exact component = {UserNotCreated} />
         <Route path = "/login" exact component = {Login} />
         <Route path = "/tstupload" exact component = {ImageUpload} />
-        <Footer/>
+        <Footer className = "bottom:0" />
     </Router>
   );
 }
