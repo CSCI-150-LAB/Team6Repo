@@ -18,7 +18,7 @@ import UserCreated from './components/usercreated'
 import UserNotCreated from './components/usernotcreated'
 import ImageUpload from './components/imageupload.component.js';
 import Login from './components/login.components.js';
-
+import meals from'./components/meals'
 function App() {
   //const [loginUsername,setLoginUsername] = useState("");
   return (
@@ -26,9 +26,9 @@ function App() {
         <Nav />
         <br/>
         <Route path = "/home" exact component = {home} /> 
-        <Route path = "/home" exact component = {Footer} /> 
+        <Route path = "/home" exact component = {meals} />
         <Route path = "/" exact component = {home} /> 
-        <Route path = "/" exact component = {Footer} /> 
+        <Route path = "/" exact component = {meals} />
         <Route path = "/review" component = {reviews} />
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
@@ -37,6 +37,7 @@ function App() {
         <Route path = "/usernotcreated" exact component = {UserNotCreated} />
         <Route path = "/login" exact component = {Login} />
         <Route path = "/tstupload" exact component = {ImageUpload} />
+        <Footer/>
     </Router>
   );
 }

@@ -6,11 +6,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-import Food1 from "../images/cards/1.jpeg";
-import Food2 from "../images/cards/2.png";
-import Food3 from "../images/cards/3.png";
-import Food4 from "../images/cards/4.jpg";
-import Food5 from "../images/cards/5.jpg";
+import Food1 from "./images/cards/1.jpeg";
+import Food2 from "./images/cards/2.png";
+import Food3 from "./images/cards/3.png";
+import Food4 from "./images/cards/4.jpg";
+import Food5 from "./images/cards/5.jpg";
 
 
 function meals() {
