@@ -40,14 +40,9 @@ connection.once('open', () => {
 
 
 
-
-
-const sellersRouter = require('./routes/sellers'); 
 const adminRouter = require('./routes/admin');
 const { ApiClient } = require('admin-bro');
 
-
-app.use('/sellers', sellersRouter); 
 app.use('/admin', adminRouter); 
 
 

@@ -3,52 +3,63 @@ const isEmpty = require("is-empty");
 
 module.exports = function validateRegisterInput(data) {
   // create an error object 
-  let errors = {};
+  let err = {};
 
 
-// Convert empty fields to an empty string so we can use validator functions
-  data.name = !isEmpty(data.name) ? data.name : "";
-  data.email = !isEmpty(data.email) ? data.email : "";
-  data.password = !isEmpty(data.password) ? data.password : "";
-  data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
-// Name checks
+ // To perform validation on the inputs, we need to initialize them as empty strings. 
+
+  if(!isEmpty(data.name)){ data.name == data.name; }
+        else { data.name ==  ""; }
+  if(!isEmpty(data.email)){ data.email == data.email; }
+        else { data.email ==  ""; }
+  if(!isEmpty(data.password)){ data.password == data.password; }
+        else { data.password ==  ""; }
+  if(!isEmpty(data.password2)){ data.password2 == data.password2; }
+        else { data.password2 ==  ""; }
+
+ /*data.name = !isEmpty(data.name) ? data.name : "";
+ data.email = !isEmpty(data.email) ? data.email : "";
+ data.password = !isEmpty(data.password) ? data.password : "";
+ data.password2 = !isEmpty(data.password2) ? data.password2 : "";
+ */
+
+
+// Validator function to check if name is empty
   if (Validator.isEmpty(data.name)) {
-    errors.name = "Name field is required";
+    err.name = "Name field is required";
   }
 
-
-// Email checks
+// Validator function to check if email is empty
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    err.email = "Email field is required";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    err.email = "Email is invalid";
   }
 
-
-// Password checks
+// Validator function to check if password is empty
   if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    err.password = "Password field is required";
   }
 
-// matching passwords require two entries. 
+// Have to input data to both password fields. 
 if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Confirm password field is required";
+    err.password2 = "Confirm password field is required";
   }
-
-
+// makes sure the password meeting requirements
 if (!Validator.isLength(data.password, { min: 8, max: 30 })) {
-    errors.password = "Password must be at least 8 characters";
+    err.password = "Password must be at least 8 characters";
   }
 
-
+// BOTH passwords have to be matching 
 if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = "Passwords must match";
+    err.password2 = "Passwords must match";
   }
 
-
+// these two variables are going to the be the variables that will be used in the users.js route. They will serve as a 
+// a way to check if they inputs work or not. 
 return {
-    errors,
-    isValid: isEmpty(errors)
+    err,
+    isValid: isEmpty(err)
   };
 };

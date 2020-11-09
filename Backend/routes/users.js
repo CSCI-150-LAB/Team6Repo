@@ -3,59 +3,28 @@ const router = express.Router();
 const bcrypt = require('bcryptjs'); 
 const keys = require('../config/keys'); 
 const jwt = require('jsonwebtoken');
+const session = require('express-session'); 
 
 
 const validateRegInput = require('../validation/register');
 const validateLogInput = require('../validation/login');
+//const loginAuth = require('../authentication/auth');
 
 const User = require('../models/user.model');
+const { route } = require("./admin");
+secretOrKey = 'secret'; 
 
 /*
-router.post('/register', (req, res) => {
-      const { errors, isValid } = validateRegInput(req.body); 
-  // basically this checks the validaiton, if not valid, return error message
-    if (!isValid){ 
-      return res.status(400).json(errors); 
-    }
-
-// use mongoDB findone() function to find the username in the database.
-  User.findOne({ 
-    email: req.body.email
-})
-.then (user => { 
-  if (user){ 
-    return res.state(400).json({ email: "Sorry. The email that you entered already exists."});
-  } else { 
-    const newUser = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    });
-    
-    // using bycrypt so that when we store password, it's not stored in plain text. 
-    // code example from mongoDB ("Password Authentication with Mongoose")
-    bcrypt.genSalt(10, (err, salt) => { 
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if (err) {
-            throw err;
-        }
-        newUser.password = hash;
-        newUser.save()
-          .then(user => res.json(user))
-          .catch(err => console.log(err));
-        });
-      });
-    }
-  });
-});
+  This function lets the user register on the website. It calls the validateRegInput function which allows
+  us to validate the register inputs as valid inputs. It then will use the mongoDB findOne() function to go into 
+  the data base to search for the email and see if it exists. 
 */
-
 router.post("/register", (req, res) => {
-  // Form validation
-const { errors, isValid } = validateRegInput(req.body);
-// Check validation
+
+// takes the variables/constants from the function. 
+const { err, isValid } = validateRegInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json(err);
   }
 User.findOne({ email: req.body.email }).then(user => {
     if (user) {
@@ -67,9 +36,12 @@ User.findOne({ email: req.body.email }).then(user => {
         password: req.body.password
       });
 // Hash password before saving in database
+
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
-          if (err) throw err;
+          if (err) 
+            throw err;
+
           newUser.password = hash;
           console.log(newUser);
           newUser
@@ -78,31 +50,35 @@ User.findOne({ email: req.body.email }).then(user => {
             .catch(err => console.log(err));
         });
       });
+      
+
     }
   });
 });
 
-
+/*
+This function allows the user if they are registered to login using their credentials. It will use the variables 
+that are returned by the validateLogInput() functiuon to determine if the input fields are first valid and then 
+go into the MongoDB database using the findOne function to check if the email exists or not along with the password. 
+If there is a match and it is a success, there will be assigned a JWT payload and token. 
+*/
 router.post("/login", (req, res) => {
-  // Form validation
-const { errors, isValid } = validateLogInput(req.body);
+ 
+const { err, isValid } = validateLogInput(req.body);
   if (!isValid) {
-    return res.status(400).json(errors);
+    return res.status(400).json(err);
   }
   const email = req.body.email;
   const password = req.body.password;
 
-
-// Find user by email
 User.findOne({ email }).then(user => {
-    // Check if user exists
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
     }
 
-
 // Check password
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password, user.password)
+    .then(isMatch => {
       if (isMatch) {
         // User matched
         // Create JWT Payload
@@ -113,9 +89,7 @@ User.findOne({ email }).then(user => {
 
         
 // Sign token
-        jwt.sign(
-          payload,
-          keys.secretOrKey,
+        jwt.sign(payload, keys.secretOrKey,
           {
             expiresIn: 31556926 // 1 year in seconds
           },
@@ -134,6 +108,11 @@ User.findOne({ email }).then(user => {
     });
   });
 });
+
+router.get('/profile',(req,res) => { 
+
+  console.log(res.User);
+})
 
 /*
 router.route('/').get((req, res) => {

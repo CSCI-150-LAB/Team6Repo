@@ -29,15 +29,19 @@ function App() {
         <Nav />
         <br/>
         <Route path = "/home" exact component = {Carousel} /> 
-        <Route path = "/home" exact component = {Footer} /> 
         <Route path = "/home" exact component = {Meals} />
+        <Route path = "/" exact component = {Carousel} /> 
+        <Route path = "/" exact component = {Meals} />
+        
         
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
         
         <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
 
+        <Route exact path="/login" component={Login} />
+        
+        <Footer/>
  
     </Router>
    
