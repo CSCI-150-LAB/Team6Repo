@@ -29,7 +29,7 @@ function navbar() {
           <Nav.Link href="signup">Register or Log in</Nav.Link>
           <NavDropdown title="Help" id="collasible-nav-dropdown">
             <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>
-            <NavDropdown.Item href="contact us">Contacts us</NavDropdown.Item>
+            <NavDropdown.Item href="contactus">Contacts us</NavDropdown.Item>
           </NavDropdown>
         </Nav>
         <Form inline>
