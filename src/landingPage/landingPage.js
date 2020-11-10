@@ -8,6 +8,11 @@ class landingPage extends Component {
     this.props.logoutUser();
     window.location = '/home';
   };
+
+
+
+
+  
 render() {
     const { user } = this.props.auth;
 return (
