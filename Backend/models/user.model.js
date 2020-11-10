@@ -19,7 +19,7 @@ const userSchema = new Schema({
   },
   name:{
     type: String,
-    required: true,
+    required: false,
     unique: false,
     minlength: 2
   },
@@ -30,7 +30,7 @@ const userSchema = new Schema({
   },
   address:{
     type: String,
-    required: true,
+    required: false,
   }
 }, {
   timestamps: true,

@@ -1,30 +1,51 @@
 import React from 'react';
-import './App.css';
-import Nav from './components/nav';
-import Carousel from './components/carousel';
-import Meals from './components/meals';
-import HowItWorks from './components/howitworks';
-import Signup from './components/signup';
-import Footer from './components/Footer';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+//import store from "./store";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import Navbar from "./components/navbar.component.js";
+import Nav from "./components/nav.js"; 
+//import ExercisesList from "./components/exercises-list.component";
+//import CreateExercise from "./components/create-exercise.component";
+//import EditExercises from "./components/edit-exercise.component";
+import CreateSeller from "./components/create-seller.component";
+import home from "./components/home"
+import HowitWorks from "./components/howitworks"; 
+import SignUpUser from "./components/signup"; 
+import Footer from "./components/Footer";
+//import imageUpload from "./components/image-upload.components"
+import reviews from './components/foodreview.component';
+import UserCreated from './components/usercreated'
+import UserNotCreated from './components/usernotcreated'
+import ImageUpload from './components/imageupload.component.js';
+import Login from './components/login.components.js';
+import meals from'./components/meals.jsx'
+import { applyMiddleware, createStore } from 'redux';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-function AuthenticChef() {
+const store = createStore(() => [],{},applyMiddleware);
+function App() {
+  
   return (
-    <Router>
-      <div className="App">
-        <Nav />
-        <Route path = "/home" from component = {Carousel} />
-        <Route path = "/home" from component = {Meals} />
-        <Route path = "/howitworks" from component = {HowItWorks} />
-        <Route path = "/signup" from component = {Signup} />
-        <Footer />
-      </div>
-    </Router>
-    
-    
+    <Provider store = {store}>
+      <Router>
+          <Nav />
+          <br/>
+          <Route path = "/home" exact component = {home} /> 
+          <Route path = "/home" exact component = {meals} />
+          <Route path = "/" exact component = {home} /> 
+          <Route path = "/" exact component = {meals} />
+          <Route path = "/review" component = {reviews} />
+          <Route path = "/createSeller" component = {CreateSeller} />  
+          <Route path = "/howitworks" exact component = {HowitWorks} />
+          <Route path = "/signup" exact component = {SignUpUser} /> 
+          <Route path = "/usercreated" exact component = {UserCreated} />
+          <Route path = "/usernotcreated" exact component = {UserNotCreated} />
+          <Route path = "/login" exact component = {Login} />
+          <Route path = "/tstupload" exact component = {ImageUpload} />
+          <Footer  />
+      </Router>
+    </Provider>
   );
 }
 

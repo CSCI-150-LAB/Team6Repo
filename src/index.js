@@ -5,7 +5,13 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import 'bootstrap/dist/css/bootstrap.css'
-
+import { combineReducers } from "redux";
+import authReducer from "../src/reducers/authReducer.js";
+import errorReducer from "../src/reducers/errorReducer.js";
+export default combineReducers({
+  auth: authReducer,
+  errors: errorReducer
+});
 ReactDOM.render(
   <React.StrictMode>
     <App />
