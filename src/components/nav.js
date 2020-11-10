@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import ".././App.css";
 
 import Nav from "react-bootstrap/Nav";
@@ -6,11 +6,14 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
-
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 //import Image from "react-bootstrap/Image";
 import Logo from "./images/logo.png";
 
 function navbar() {
+
+
   return (
     <Navbar className="navcolor" expand="lg">
       <Navbar.Brand href="home">
@@ -28,6 +31,7 @@ function navbar() {
           <Nav.Link href="login">Login</Nav.Link>
           <Nav.Link href="register">Register</Nav.Link>
           <Nav.Link href="howitworks">How It Works</Nav.Link>
+         
         </Nav>
         <Form inline>
           <FormControl
@@ -40,5 +44,7 @@ function navbar() {
       </Navbar.Collapse>
     </Navbar>
   );
+  
 }
+
 export default navbar;

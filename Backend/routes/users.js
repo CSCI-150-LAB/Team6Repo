@@ -5,8 +5,8 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport'); 
 const session = require('express-session');
 
-const validateRegInput = require('../validation/register');
-const validateLogInput = require('../validation/login');
+const validateRegInput = require('../validation/registerValidation');
+const validateLogInput = require('../validation/loginValidation');
 
 
 const User = require('../models/user.model');
@@ -89,12 +89,14 @@ User.findOne({ email }).then(user => {
             expiresIn: 31556926 // 1 year in seconds
           },
           (err, token) => {
-            /*res.json({
+            res.json({
               success: true,
               token: "Bearer " + token
-            });*/
+            });
+            /*
             res.header('auth-token', token)
             .send(token); 
+            */
           }
         );
 
@@ -107,7 +109,7 @@ User.findOne({ email }).then(user => {
   });
 });
 
-router.get('/profile', passport.authenticate('JWT'))
+
 
 
 module.exports = router;

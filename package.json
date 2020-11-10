@@ -20,6 +20,8 @@
     "express-formidable": "^1.2.0",
     "express-generator": "^4.16.0",
     "express-session": "^1.15.6",
+    "is-empty": "^1.2.0",
+    "jwt-decode": "^3.1.1",
     "nodemon": "^2.0.6",
     "nvm": "0.0.4",
     "react": "^16.13.1",
