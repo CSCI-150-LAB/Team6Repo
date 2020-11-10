@@ -14,7 +14,8 @@ import Register from "./components/register/register";
 import Login from "./components/login/login";
 import privateRoute from "./privateRoutes/privateRoute";
 import landingPage from "./landingPage/landingPage"
-
+import ContactUs from './components/contactus';
+import MainDishes from './components/maindishes';
 //future features
 //import Join from "./components/Join";
 //import Chat from "./components/Chat";
@@ -55,7 +56,8 @@ function App() {
         <Route path = "/home" exact component = {Meals} />
         <Route path = "/" exact component = {Carousel} /> 
         <Route path = "/" exact component = {Meals} />
-        
+        <Route path = "/contactus" from component = {ContactUs} />
+        <Route path = "/maindishes" from component = {MainDishes} />
 
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
@@ -76,3 +78,7 @@ function App() {
 }
 
 export default App;
+
+
+
+
