@@ -7,6 +7,7 @@ import HowItWorks from './components/howitworks';
 import Signup from './components/signup';
 import Footer from './components/Footer';
 import ContactUs from './components/contactus';
+import MainDishes from './components/maindishes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,6 +23,7 @@ function AuthenticChef() {
         <Route path = "/howitworks" from component = {HowItWorks} />
         <Route path = "/signup" from component = {Signup} />
         <Route path = "/contactus" from component = {ContactUs} />
+        <Route path = "/maindishes" from component = {MainDishes} />
         <Footer />
       </div>
     </Router>
