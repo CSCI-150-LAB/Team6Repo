@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
 const passport = require('passport')
+const session = require('express-session');
 
 require('dotenv').config();
 
@@ -23,13 +24,21 @@ app.use(cors());
 app.use(express.json());
 
 
-  // middleware 
-  
+// middleware 
 const users = require("./routes/users");
 app.use(passport.initialize());
 require('./config/passport');
 app.use('/routes/users', users);
 
+const adminRouter = require('./routes/admin');
+const { ApiClient } = require('admin-bro');
+app.use('/admin', adminRouter); 
+
+const postRoute = require('./routes/posts'); 
+app.use('/routes/posts', postRoute); 
+
+
+// mongoDB connection
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
   
@@ -38,17 +47,7 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
-
-
-const adminRouter = require('./routes/admin');
-const { ApiClient } = require('admin-bro');
-
-app.use('/admin', adminRouter); 
-
-
-
 //admin page localhost::5000/admin to access. 
-
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });

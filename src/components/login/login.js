@@ -1,24 +1,27 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+//import authservice from "../services/auth-service";
 
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.handleLogin = this.handleLogin.bind(this);
     this.state = {
       email: "",
       password: "",
       errors: {}
     };
   }
-onChange = e => {
+onChange(e) {
     this.setState({ [e.target.id]: e.target.value });
   };
 
 
 
-onSubmit = e => {
+
+onSubmit(e) {
     e.preventDefault();
 const userData = {
       email: this.state.email,
@@ -28,16 +31,24 @@ console.log(userData);
 
 axios.post('http://localhost:5000/routes/users/login', userData)
     .then(res =>{ 
+      /*
       console.log(res.data)
         if (res.data.success){
           window.location = '/home';
         }
+        */
+        return JSON.parse(localStorage.getItem('user'));;
       }
     ).catch(err =>{
       alert('wrong email and password combination. Do it again xd');
     })
-
   };
+
+
+
+
+
+
 render() {
     const { errors } = this.state;
 return (

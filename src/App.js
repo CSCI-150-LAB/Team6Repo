@@ -6,10 +6,8 @@ import Nav from "./components/nav.js";
 import CreateSeller from "./components/create-seller.component";
 
 import HowitWorks from "./components/howitworks"; 
-//import SignUpUser from "./components/signup"; 
+import Profile from "./components/profile";
 import Footer from "./components/Footer";
-
-//import signupnewUser from "./components/signupnewUser"; 
 import Register from "./components/register/register"; 
 import Login from "./components/login/login";
 
@@ -19,8 +17,7 @@ import Login from "./components/login/login";
 
 import Meals from './components/meals';
 import Carousel from './components/carousel';
-//import Provider from 'react-redux';
-//import store from  './store'; 
+
 
 function App() {
   return (
@@ -33,14 +30,14 @@ function App() {
         <Route path = "/" exact component = {Carousel} /> 
         <Route path = "/" exact component = {Meals} />
         
-        
+
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
         
         <Route exact path="/register" component={Register} />
 
         <Route exact path="/login" component={Login} />
-        
+        <Route path = "/profile" exact component = {Profile} />
         <Footer/>
  
     </Router>

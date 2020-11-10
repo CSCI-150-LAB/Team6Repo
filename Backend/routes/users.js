@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs'); 
-const keys = require('../config/keys'); 
 const jwt = require('jsonwebtoken');
-const session = require('express-session'); 
-
+const passport = require('passport'); 
+const session = require('express-session');
 
 const validateRegInput = require('../validation/register');
 const validateLogInput = require('../validation/login');
-//const loginAuth = require('../authentication/auth');
+
 
 const User = require('../models/user.model');
 const { route } = require("./admin");
-secretOrKey = 'secret'; 
+
+
 
 /*
   This function lets the user register on the website. It calls the validateRegInput function which allows
@@ -28,29 +28,26 @@ const { err, isValid } = validateRegInput(req.body);
   }
 User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({ email: "Email already exists, try another" });
     } else {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password
       });
-// Hash password before saving in database
-
+// Hash password before saving in database for security purposes
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
           if (err) 
             throw err;
-
           newUser.password = hash;
           console.log(newUser);
-          newUser
-            .save()
+          newUser.save()
             .then(user => res.json("User added!"))
             .catch(err => console.log(err));
         });
       });
-      
+    
 
     }
   });
@@ -78,28 +75,29 @@ User.findOne({ email }).then(user => {
 
 // Check password
     bcrypt.compare(password, user.password)
-    .then(isMatch => {
-      if (isMatch) {
-        // User matched
-        // Create JWT Payload
+    .then(valid => {
+      if (valid) {
+        // If User matched
+        // Create JWT Payload that will be used for token
         const payload = {
           id: user.id,
           name: user.name
         };
-
-        
-// Sign token
-        jwt.sign(payload, keys.secretOrKey,
+        // create jwt
+        jwt.sign(payload, process.env.secretOrkey,
           {
             expiresIn: 31556926 // 1 year in seconds
           },
           (err, token) => {
-            res.json({
+            /*res.json({
               success: true,
               token: "Bearer " + token
-            });
+            });*/
+            res.header('auth-token', token)
+            .send(token); 
           }
         );
+
       } else {
         return res
           .status(400)
@@ -109,30 +107,7 @@ User.findOne({ email }).then(user => {
   });
 });
 
-router.get('/profile',(req,res) => { 
+router.get('/profile', passport.authenticate('JWT'))
 
-  console.log(res.User);
-})
-
-/*
-router.route('/').get((req, res) => {
-  User.find()
-    .then(users => res.json(users))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/add').post((req, res) => {
-
-  const password = req.body.password;
-  const name    = req.body.name;
-  const email   = req.body.email;
-
-  const newUser = new User({password,name,email});        
-
-  newUser.save()
-    .then(() => res.json('User added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
-});
-*/
 
 module.exports = router;
