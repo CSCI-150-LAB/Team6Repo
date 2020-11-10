@@ -78,7 +78,7 @@ export default class ImageUpload extends Component{
               <Label>File </Label>
               <Input type = "file" className="form-control-file" onChange = {this.fileSelectedHandler}/>
             </FormGroup>
-            <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.fileUploadHandler}> {'Upload'} </Button> 
+            <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.onSubmit}> {'Upload'} </Button> 
           </Form>
         )
       }

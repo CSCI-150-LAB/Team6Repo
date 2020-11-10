@@ -79,6 +79,7 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
     price: req.body.price,
     productImage: req.file.path 
   });
+  console.log(req);
   fooditem
     .save()
     .then(result => {
@@ -92,7 +93,7 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
             productImage: result.productImage,
             request: {
                 type: 'GET',
-                url: "http://localhost:3000/fooditems/" + result._id
+                url: "http://localhost:5000/fooditems/" + result._id
             }
         }
       });

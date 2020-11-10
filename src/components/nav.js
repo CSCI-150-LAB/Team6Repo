@@ -23,6 +23,8 @@ function navbar() {
       />
     </Navbar.Brand>
     <Nav.Link href="home" className = "NavName">Authentic Chef</Nav.Link>
+    <Nav.Link href="tstupload" className = "NavName">Upload Pictures</Nav.Link>
+    <Nav.Link href="tstview" className = "NavName">View Pictures</Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
