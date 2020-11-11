@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 
 //import Image from "react-bootstrap/Image";
-import Logo from "../images/logo.png";
+import Logo from "../imagesForMain/logo.png";
 
 function navbar() {
   return (
@@ -26,7 +26,8 @@ function navbar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="signup">Register or Log in</Nav.Link>
+          <Nav.Link href="register">Register</Nav.Link>
+          <Nav.Link href="login">Login</Nav.Link>
           <Nav.Link href="maindishes">Dishes</Nav.Link>
           <NavDropdown title="Help" id="collasible-nav-dropdown">
             <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>

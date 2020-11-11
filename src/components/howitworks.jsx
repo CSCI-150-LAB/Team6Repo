@@ -2,8 +2,8 @@ import React from 'react';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Food1 from "../images/img1.jpg";
-import Food2 from "../images/img2.jpg";
+import Food1 from "../imagesForMain/img1.jpg"
+import Food2 from "../imagesForMain/img2.jpg"
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 

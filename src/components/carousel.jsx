@@ -3,9 +3,9 @@ import '.././App.css';
 
 import Carousel from 'react-bootstrap/Carousel';
 
-import Slide1 from "./images/img1.jpg";
-import Slide2 from "./images/img2.jpg";
-import Slide3 from "./images/img3.jpg";
+import Slide1 from "../imagesForMain/img1.jpg"
+import Slide2 from "../imagesForMain/img2.jpg"
+import Slide3 from "../imagesForMain/img3.jpg"
 
 function carousel(){
     return(

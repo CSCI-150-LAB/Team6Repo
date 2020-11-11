@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./components/ultilities/setAuthenicatedToken";
 import { setCurrentUser, logoutUser } from "./components/actions/authActions";
 
-import Nav from "./components/nav.js"; 
+import Nav from "./components/nav.jsx"; 
 import CreateSeller from "./components/create-seller.component";
 
 import HowitWorks from "./components/howitworks"; 
@@ -14,6 +14,9 @@ import Register from "./components/register/register";
 import Login from "./components/login/login";
 import privateRoute from "./privateRoutes/privateRoute";
 import landingPage from "./landingPage/landingPage"
+import contactus from "./components/contactus"; 
+import MainDishes from "./components/maindishes"; 
+
 
 //future features
 //import Join from "./components/Join";
@@ -59,14 +62,15 @@ function App() {
 
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
-        
-        <Route exact path="/register" component={Register} />
+        <Route path = "/contactus" exact component = {contactus} />
+        <Route path = "/maindishes" exact component = {MainDishes} />
 
+        <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         
         
               <Route exact path="/landingPage" component={landingPage} />
-            
+        
 
         <Footer/>
  
