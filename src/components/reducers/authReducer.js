@@ -8,7 +8,7 @@ const initialState = {
     isAuthenticated: false, 
     user: {}, 
     loading: false, 
-    role: {}
+    isSeller: false
 }; 
 
 export default function(state = initialState, action) { 
@@ -32,7 +32,8 @@ export default function(state = initialState, action) {
         case set_user_role: 
             return { 
                 ...state, 
-                role:action.payload
+                role:action.payload, 
+                isSeller: false
             }
             
         default: 

@@ -5,8 +5,10 @@ import React, { Component } from "react";
 import axios from 'axios';
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 import Button from 'react-bootstrap/Button'
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-export default class reviews extends Component {
+class reviews extends Component {
     constructor(props){
         super(props);
 
@@ -21,7 +23,7 @@ export default class reviews extends Component {
         }
     }
     
-    componentdidMount(){ 
+    componentDidMount(){ 
         const { user } = this.props.auth; 
         this.setState = ({username: user.name})
     }
