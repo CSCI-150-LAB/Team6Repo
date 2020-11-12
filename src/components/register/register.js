@@ -15,6 +15,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      role: "", 
       errors: {}
     }
   }
@@ -44,7 +45,8 @@ const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      role: this.state.role
     };
 
 this.props.registerUser(newUser, this.props.history); 
@@ -111,6 +113,8 @@ return (
                 />
                 <label htmlFor="email">Email</label>
               </div>
+
+              
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -119,12 +123,13 @@ return (
                   id="password"
                   type="password"
                   className={classnames("", {
-                    invalid: errors.email
+                    invalid: errors.password
                   })}
                 />
                 <label htmlFor="password">Password</label>
                 <span className="red-text">{errors.name}</span>
               </div>
+
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -136,6 +141,24 @@ return (
                 <label htmlFor="password2">Confirm Password</label>
                 <span className="red-text">{errors.name}</span>
               </div>
+
+
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.role}
+                  error={errors.role}
+                  id="role"
+                  type="role"
+                  className={classnames("", {
+                    invalid: errors.role
+                  })}
+                />
+                <label htmlFor="role">please enter "seller" or "buyer" nothing else pls</label>
+                <span className="red-text">{errors.name}</span>
+              </div>
+
+
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{

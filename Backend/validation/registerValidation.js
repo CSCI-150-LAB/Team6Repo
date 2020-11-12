@@ -17,6 +17,8 @@ module.exports = function validateRegisterInput(data) {
         else { data.password ==  ""; }
   if(!isEmpty(data.password2)){ data.password2 == data.password2; }
         else { data.password2 ==  ""; }
+  if(!isEmpty(data.role)){ data.role == data.role; }
+        else { data.role ==  ""; }
 
  /*data.name = !isEmpty(data.name) ? data.name : "";
  data.email = !isEmpty(data.email) ? data.email : "";
@@ -54,6 +56,11 @@ if (!Validator.isLength(data.password, { min: 8, max: 30 })) {
 // BOTH passwords have to be matching 
 if (!Validator.equals(data.password, data.password2)) {
     err.password2 = "Passwords must match";
+  }
+  
+  // User has to pick their role: Buyer or seller 
+  if (Validator.isEmpty(data.role)) {
+    err.role = "HEY YOU! PICK A ROLE :)";
   }
 
 // these two variables are going to the be the variables that will be used in the users.js route. They will serve as a 

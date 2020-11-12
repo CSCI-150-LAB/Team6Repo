@@ -12,7 +12,7 @@ import HowitWorks from "./components/howitworks";
 import Footer from "./components/Footer";
 import Register from "./components/register/register"; 
 import Login from "./components/login/login";
-import privateRoute from "./privateRoutes/privateRoute";
+import PrivateRoute from "./privateRoutes/privateRoute";
 import landingPage from "./landingPage/landingPage"
 import contactus from "./components/contactus"; 
 import MainDishes from "./components/maindishes"; 
@@ -29,23 +29,29 @@ import { Provider } from "react-redux";
 import store from "./components/store/store";
 
 
-// Check for token to keep user logged in
+/*
+
+Before we start our application, we want to check that the user is logged in. What we have to do is: 
+1. check if there exists a token
+2. set the authentication token IF there exists a token
+3. Decode the JWT so that we can obtain the payload (ID and Name)
+4. Set the current user based off that decoded token
+5. Set an expiriation time for that token.  
+
+*/
+
 if (localStorage.jwtToken) {
-  // Set auth token header auth
   const token = localStorage.jwtToken;
   setAuthToken(token);
-  // Decode token and get user info and exp
-  const decoded = jwt_decode(token);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
-// Check for expired token
-  const currentTime = Date.now() / 1000; // to get in milliseconds
-  if (decoded.exp < currentTime) {
-    // Logout user
-    store.dispatch(logoutUser());
-    // Redirect to login
+  const decodedToken = jwt_decode(token);
+  store.dispatch(setCurrentUser(decodedToken));
+  const exoirationTime = Date.now() / 1000; 
+  
+  if (decodedToken.exp < exoirationTime) {
+    store.dispatch(logoutUser());         // Logout user and redirect them to the login screen. 
     window.location.href = "./login";
   }
+
 }
 
 function App() {
@@ -67,9 +73,7 @@ function App() {
 
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
-        
-        
-              <Route exact path="/landingPage" component={landingPage} />
+        <Route exact path="/landingPage" component={landingPage} />
         
 
         <Footer/>

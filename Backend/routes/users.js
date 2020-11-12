@@ -25,7 +25,7 @@ router.post("/register", (req, res) => {
 const { err, isValid } = validateRegInput(req.body);
   if (!isValid) {
     return res.status(400).json(err);
-  }
+  }     
 User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       return res.status(400).json({ email: "Email already exists, try another" });
@@ -33,7 +33,8 @@ User.findOne({ email: req.body.email }).then(user => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password, 
+        role: req.body.role
       });
 // Hash password before saving in database for security purposes
       bcrypt.genSalt(10, (err, salt) => {
@@ -54,10 +55,10 @@ User.findOne({ email: req.body.email }).then(user => {
 });
 
 /*
-This function allows the user if they are registered to login using their credentials. It will use the variables 
-that are returned by the validateLogInput() functiuon to determine if the input fields are first valid and then 
-go into the MongoDB database using the findOne function to check if the email exists or not along with the password. 
-If there is a match and it is a success, there will be assigned a JWT payload and token. 
+  This function allows the user if they are registered to login using their credentials. It will use the variables 
+  that are returned by the validateLogInput() functiuon to determine if the input fields are first valid and then 
+  go into the MongoDB database using the findOne function to check if the email exists or not along with the password. 
+  If there is a match and it is a success, there will be assigned a JWT payload and token. 
 */
 router.post("/login", (req, res) => {
  
@@ -81,7 +82,8 @@ User.findOne({ email }).then(user => {
         // Create JWT Payload that will be used for token
         const payload = {
           id: user.id,
-          name: user.name
+          name: user.name,
+          role: user.role
         };
         // create jwt
         jwt.sign(payload, process.env.secretOrkey,

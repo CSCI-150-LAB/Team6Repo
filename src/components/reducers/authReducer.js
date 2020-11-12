@@ -1,4 +1,4 @@
-import {set_current_user, user_loading} from "../actions/definitions"; 
+import {set_current_user, user_loading, set_user_role} from "../actions/definitions"; 
 
 const isEmpty = require ('is-empty');
 
@@ -7,7 +7,8 @@ const isEmpty = require ('is-empty');
 const initialState = { 
     isAuthenticated: false, 
     user: {}, 
-    loading: false
+    loading: false, 
+    role: {}
 }; 
 
 export default function(state = initialState, action) { 
@@ -27,6 +28,13 @@ export default function(state = initialState, action) {
                 ...state, 
                 loading:true
             };
+        
+        case set_user_role: 
+            return { 
+                ...state, 
+                role:action.payload
+            }
+            
         default: 
             return state; 
     }
