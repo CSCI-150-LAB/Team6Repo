@@ -72,13 +72,13 @@ axios.post('http://localhost:5000/routes/users/register', newUser)
                 <div className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/home" className="btn-flat waves-effect">
-                        <i className="material-icons left">Go back to Home</i>      
+                        <i className="material-icons left already">Back Home</i>      
                         </Link>
                             <h2 className="text-center">
                                 <b>Register </b>
                                  with us
                             </h2>
-                        <form className="sign-up-form" noValidate
+                        <Form className="sign-up-form" noValidate
                             onSubmit={
                                 this.onSubmit
                         }>
@@ -196,10 +196,10 @@ axios.post('http://localhost:5000/routes/users/register', newUser)
                             <Button className="btn-block" variant="outline-success" type="submit">
                                 {'Sign Up'} </Button>
                             <div className="text-center">
-                                Already have an account? <Link to="/login"> Log in</Link>
+                                Already have an account? <Link className="already" to="/login"> Log in</Link>
                             </div>
 
-                        </form>
+                        </Form>
                     </div>
                 </div>
             </div>
