@@ -23,16 +23,22 @@ class ImageUpload extends Component{
             productImage: "" // location
         }
     }
+
+    componentDidMount(){ 
+      const {user} = this.props.auth;
+      this.setState({name: user.name});
+    }
     
     onChangeName(e){
         this.setState({
         name: e.target.value
         })
     }
+    
     displayName = () => {
       console.log(this.state.name);
-      console.log(this.props.auth);
     }
+    
     onChangePrice(e){
       this.setState({
       price: e.target.value
@@ -43,6 +49,7 @@ class ImageUpload extends Component{
             productImage: e.target.files[0]
         })
     }
+    // this is for local uploads. (e.g. randy's phone)
     fileUploadHandler = () =>{
         const newFoodItem = new FormData();
         newFoodItem.append("name",this.state.name);
@@ -64,7 +71,7 @@ class ImageUpload extends Component{
     }
     
     render() {
-      const { user } = this.props.auth;
+     // const { user } = this.props.auth;
         return (
             /*
             <div>
@@ -78,7 +85,7 @@ class ImageUpload extends Component{
             <FormGroup>
               <Label>Name </Label>
               <h3>
-                {user.name.split(" ")[0]}
+                {this.state.name.split(" ")[0]}
               </h3>
             </FormGroup>
             <FormGroup>
@@ -95,6 +102,7 @@ class ImageUpload extends Component{
         )
       }
 }
+
 ImageUpload.propTypes = {
   auth: PropTypes.object.isRequired
 };

@@ -21,11 +21,11 @@ export default class reviews extends Component {
         }
     }
     
-    onChangeUsername(e){
-        this.setState({
-        username: e.target.value
-        })
+    componentdidMount(){ 
+        const { user } = this.props.auth; 
+        this.setState = ({username: user.name})
     }
+
     onChangeReview(e){
       this.setState({
       review: e.target.value
@@ -59,7 +59,7 @@ export default class reviews extends Component {
 
                 <div className="form-group col-md-3">
                     <label>Name of the chef you would like to review</label>
-                    <input type="username" className="form-control" onChange = {this.onChangeUsername}/>
+                    <h3></h3>
                 </div>
 
                 {/*<div className="auth-wrapper">
@@ -82,3 +82,13 @@ export default class reviews extends Component {
         );
     }
 }
+
+reviews.propTypes = {
+    auth: PropTypes.object.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth
+  });
+  export default connect(
+    mapStateToProps)(reviews);
+  

@@ -33,6 +33,15 @@ export const loginUser = userData => dispatch => {
       );
   };
 
+  // upload food image 
+  export const image = newFoodItem  => { 
+    axios.post('http://localhost:5000/fooditems/add', newFoodItem)
+    .then(res => { 
+      console.log(res.data); 
+    })
+          
+    
+  }
 
 // set logged in user action
 export const setCurrentUser = decoded => { 
