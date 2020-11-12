@@ -43,7 +43,7 @@ return (
             >
               Logout
             </button>
-            <img src = "./uploads/Mike and Birb.jpg" alt = ""/>
+            <img src = "/uploads/Mike and Birb.jpg" alt = ""/>
           </div>
         </div>
       </div>

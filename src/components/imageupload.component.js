@@ -55,7 +55,7 @@ class ImageUpload extends Component{
     }
     onSubmit(e){
       const newFoodItem = new FormData();
-      newFoodItem.append("name",this.props.auth.name.split(" ") [0]);
+      newFoodItem.append("name",this.state.name);
       newFoodItem.append("price",this.state.price);
       newFoodItem.append("productImage",this.state.productImage,this.state.productImage.name);
       console.log(newFoodItem);
