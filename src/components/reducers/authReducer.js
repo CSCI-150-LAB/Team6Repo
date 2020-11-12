@@ -8,7 +8,7 @@ const initialState = {
     isAuthenticated: false, 
     user: {}, 
     loading: false, 
-    isSeller: false
+    role: {}
 }; 
 
 export default function(state = initialState, action) { 
@@ -33,7 +33,7 @@ export default function(state = initialState, action) {
             return { 
                 ...state, 
                 role:action.payload, 
-                isSeller: false
+                role: {}
             }
             
         default: 
