@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./components/ultilities/setAuthenicatedToken";
-import { setCurrentUser, logoutUser } from "./components/actions/authActions";
+import { setCurrentUser, logoutUser, setUserRole } from "./components/actions/authActions";
 
 import Nav from "./components/nav.jsx"; 
 import CreateSeller from "./components/create-seller.component";
@@ -17,7 +17,7 @@ import landingPage from "./landingPage/landingPage"
 import contactus from "./components/contactus"; 
 import MainDishes from "./components/maindishes"; 
 import ImageUpload from "./components/imageupload.component";
-import reviews from "./components/foodreview.component"; 
+//import reviews from "./components/foodreview.component"; 
 
 //future features
 //import Join from "./components/Join";
@@ -46,14 +46,17 @@ if (localStorage.jwtToken) {
   setAuthToken(token);
   const decodedToken = jwt_decode(token);
   store.dispatch(setCurrentUser(decodedToken));
+  store.dispatch(setUserRole(decodedToken)); 
   const exoirationTime = Date.now() / 1000; 
+  const userRole = decodedToken.role; 
   
   if (decodedToken.exp < exoirationTime) {
     store.dispatch(logoutUser());         // Logout user and redirect them to the login screen. 
     window.location.href = "./login";
   }
-
 }
+
+
 
 function App() {
   return (
@@ -66,7 +69,7 @@ function App() {
         <Route path = "/" exact component = {Carousel} /> 
         <Route path = "/" exact component = {Meals} />
         
-
+        
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
         <Route path = "/contactus" exact component = {contactus} />

@@ -27,6 +27,8 @@ export const loginUser = userData => dispatch => {
         const decoded = jwt_decode(token);        // Decode token to get user data.
         dispatch(setCurrentUser(decoded));        // Set current user
         dispatch(setUserRole(decoded));           // set role 
+        const userRole = decoded.role; 
+        console.log(userRole); 
       })
       .catch(err =>
         dispatch({ type: get_errors, payload: err.response.data})
@@ -39,9 +41,9 @@ export const loginUser = userData => dispatch => {
     .then(res => { 
       console.log(res.data); 
     })
-          
-    
   }
+
+
 
 // set logged in user action
 export const setCurrentUser = decoded => { 
