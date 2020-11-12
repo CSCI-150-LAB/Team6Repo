@@ -26,8 +26,7 @@ export const loginUser = userData => dispatch => {
         setAuthenticationToken(token);            // Set token to Auth header
         const decoded = jwt_decode(token);        // Decode token to get user data.
         dispatch(setCurrentUser(decoded));        // Set current user
-        dispatch(setUserRole(decoded));
-        console.log(decoded);
+        dispatch(setUserRole(decoded));           // set role 
       })
       .catch(err =>
         dispatch({ type: get_errors, payload: err.response.data})
