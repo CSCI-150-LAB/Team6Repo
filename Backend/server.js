@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const passport = require('passport')
 const session = require('express-session');
 
+const morgan = require("morgan"); 
+const fs = require('fs');
+
 require('dotenv').config();
 
 
@@ -14,15 +17,28 @@ const app = express();
 
 const port = process.env.PORT || 5000; 
 
-app.use(bodyParser.urlencoded({
-  extended:false
-})
-);
-
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 
+//Image Upload
+app.use(morgan("dev"));
+app.use('/fooditems', express.static('uploads'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+    return res.status(200).json({});
+  }
+  next();
+});
 
 // middleware 
 const users = require("./routes/users");
@@ -37,6 +53,8 @@ app.use('/admin', adminRouter);
 const postRoute = require('./routes/posts'); 
 app.use('/routes/posts', postRoute); 
 
+const fooditemRouter = require('./routes/fooditem');
+app.use('/fooditems',fooditemRouter);
 
 // mongoDB connection
 const uri = process.env.ATLAS_URI;

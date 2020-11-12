@@ -13,7 +13,7 @@ function carousel(){
             <Carousel.Item>
                 <img
                 className="d-block w-100 custom-img"
-                src={Slide1}
+                src= {Slide1}
                 alt="Indian Food"
                 />
                 <Carousel.Caption>

@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 
 //import Image from "react-bootstrap/Image";
-import Logo from "../imagesForMain/logo.png";
+import Logo from "../imagesForMain/NewLogo.png";
 
 function navbar() {
   return (
@@ -23,6 +23,7 @@ function navbar() {
         alt="AuthenticChef"
       />
     </Navbar.Brand>
+    <Nav.Link href="tstupload">Upload Image</Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">

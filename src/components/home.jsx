@@ -40,7 +40,7 @@ function home(){
             <Carousel.Item>
                 <img
                 className="d-block w-100 custom-img"
-                src={Slide3}
+                src="./images/img3.jpg"
                 alt="Middle Eastern Food"
                 />
 
