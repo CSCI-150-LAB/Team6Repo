@@ -27,6 +27,7 @@ export const loginUser = userData => dispatch => {
         const decoded = jwt_decode(token);        // Decode token to get user data.
         dispatch(setCurrentUser(decoded));        // Set current user
         dispatch(setUserRole(decoded));           // set role 
+        
         const userRole = decoded.role; 
         console.log(userRole); 
       })

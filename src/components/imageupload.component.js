@@ -24,9 +24,11 @@ class ImageUpload extends Component{
         }
     }
 
+
     componentDidMount(){ 
       const {user} = this.props.auth;
       this.setState({name: user.name});
+      this.setState({role: user.role}) // need to grab role to upload images. 
     }
     
     onChangeName(e){
@@ -60,6 +62,9 @@ class ImageUpload extends Component{
             console.log(res.data)})
         
     }
+  
+
+
     onSubmit(e){
       const newFoodItem = new FormData();
       newFoodItem.append("name",this.state.name);

@@ -46,9 +46,7 @@ if (localStorage.jwtToken) {
   setAuthToken(token);
   const decodedToken = jwt_decode(token);
   store.dispatch(setCurrentUser(decodedToken));
-  store.dispatch(setUserRole(decodedToken)); 
   const exoirationTime = Date.now() / 1000; 
-  const userRole = decodedToken.role; 
   
   if (decodedToken.exp < exoirationTime) {
     store.dispatch(logoutUser());         // Logout user and redirect them to the login screen. 
@@ -69,7 +67,7 @@ function App() {
         <Route path = "/" exact component = {Carousel} /> 
         <Route path = "/" exact component = {Meals} />
         
-        
+
         <Route path = "/createSeller" component = {CreateSeller} />  
         <Route path = "/howitworks" exact component = {HowitWorks} />
         <Route path = "/contactus" exact component = {contactus} />

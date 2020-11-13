@@ -82,7 +82,7 @@ User.findOne({ email }).then(user => {
         // Create JWT Payload that will be used for token
         const payload = {
           id: user.id,
-          name: user.name,
+          name: user.name,  
           role: user.role
         };
         // create jwt
