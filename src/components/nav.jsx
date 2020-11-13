@@ -9,7 +9,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 
 //import Image from "react-bootstrap/Image";
-import Logo from "../imagesForMain/NewLogo.png";
+import Logo from "../imagesForMain/logov1.3.png";
 
 function navbar() {
   return (
@@ -17,13 +17,14 @@ function navbar() {
       <Navbar.Brand href="home">
       <img
         src={Logo}
-        width="100"
-        height="100"
+        width="25%px"
+        height="5%"
+        margin="0 100px"
         className="d-inline-block align-top"
         alt="AuthenticChef"
       />
     </Navbar.Brand>
-    <Nav.Link href="tstupload">Upload Image</Nav.Link>
+     <Nav.Link href="tstupload">Upload Image</Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
