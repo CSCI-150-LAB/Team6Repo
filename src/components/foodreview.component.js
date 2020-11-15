@@ -27,7 +27,9 @@ class reviews extends Component {
         const { user } = this.props.auth; 
         this.setState = ({username: user.name})
     }
-
+    onChangeUsername(){
+        
+    }
     onChangeReview(e){
       this.setState({
       review: e.target.value

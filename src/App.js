@@ -17,7 +17,7 @@ import landingPage from "./landingPage/landingPage"
 import contactus from "./components/contactus"; 
 import MainDishes from "./components/maindishes"; 
 import ImageUpload from "./components/imageupload.component";
-import reviews from "./components/foodreview.component"; 
+//import reviews from "./components/foodreview.component"; 
 import CreateSearchQuery from "./components/food_search_component"
 //future features
 //import Join from "./components/Join";
@@ -75,6 +75,7 @@ function App() {
 
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+       
         <Route path = "/testsearch" exact component = {CreateSearchQuery} />
         <Switch> 
 

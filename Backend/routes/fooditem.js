@@ -69,6 +69,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/add", upload.single('productImage'), (req, res, next) => {
+  console.log(req.body);
   const fooditem = new FoodItem({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
@@ -105,33 +106,6 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
       res.status(500).json({
         error: err
       });
-    });
-});
-
-router.get("/searchdescription", (req, res, next) => {
-  const desc = req.params.description;
-  FoodItem.find({description: {desc}})
-    .select('name price _id productImage description ethnicity')
-    .exec()
-    .then(doc => {
-      console.log("From database", doc);
-      if (doc) {
-        res.status(200).json({
-            product: doc,
-            request: {
-                type: 'GET',
-                url: 'http://localhost:3000/fooditems'
-            }
-        });
-      } else {
-        res
-          .status(404)
-          .json({ message: "No valid entry found for provided ID" });
-      }
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ error: err });
     });
 });
 

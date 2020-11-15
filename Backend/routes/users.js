@@ -68,7 +68,7 @@ const { err, isValid } = validateLogInput(req.body);
   }
   const email = req.body.email;
   const password = req.body.password;
-
+  console.log(req);
 User.findOne({ email }).then(user => {
     if (!user) {
       return res.status(404).json({ emailnotfound: "Email not found" });
