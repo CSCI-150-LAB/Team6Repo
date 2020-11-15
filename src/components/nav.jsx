@@ -64,6 +64,7 @@ render() {
         </Nav>
      </Fragment>
     )
+    
     const guestLink = (
       <Fragment>
          <Nav className="ml-auto">
@@ -116,7 +117,6 @@ render() {
 }
 
 navbar.propTypes = {
-  loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -125,6 +125,6 @@ const mapStateToProps = state => ({
   errors: state.errors, 
   role: state.role
 });
-export default connect(mapStateToProps,)(navbar);
+export default connect(mapStateToProps)(navbar);
 
 

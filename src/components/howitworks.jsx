@@ -27,7 +27,7 @@ function HowitWorks(){
                 <br />
                 <Col className="d-flex justify-content-center flex-wrap">             
                   <div>
-                    <a href="#signup" target="_blank" rel="noopener noreferrer">
+                    <a href="register" rel="noopener noreferrer">
                       <Button className="m-2" variant="outline-success">
                         Register here
                       </Button>
@@ -45,7 +45,7 @@ function HowitWorks(){
                 <br />
                 <Col className="d-flex justify-content-center flex-wrap">             
                   <div>
-                    <a href="#home" target="_blank" rel="noopener noreferrer">
+                    <a href="maindishes" rel="noopener noreferrer">
                       <Button className="m-2" variant="outline-success">
                         Find cuisines
                       </Button>
@@ -73,7 +73,7 @@ function HowitWorks(){
                 <br />
                 <Col className="d-flex justify-content-center flex-wrap">             
                   <div>
-                    <a href="#signup" target="_blank" rel="noopener noreferrer">
+                    <a href="home" rel="noopener noreferrer">
                       <Button className="m-2" variant="outline-success">
                         Book Now
                       </Button>
