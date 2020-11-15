@@ -78,7 +78,7 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
     //cookingTime: req.body.cookingTime,
     //userID: req.body.userID,
     price: req.body.price,
-    productImage: req.file.path 
+    //productImage: req.body.productImage
   });
   
   fooditem
@@ -93,7 +93,7 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
             description: result.description,
             ethnicity: result.ethnicity,
             _id: result._id,
-            productImage: result.productImage,
+            //productImage: result.productImage,
             request: {
                 type: 'GET',
                 url: "http://localhost:5000/fooditems/" + result._id

@@ -10,7 +10,7 @@ const foodItemSchema = new Schema({
   //cookingTime:{type: Number, required:true},
   //userID: { type: Schema.Types.name, ref: 'userSchema'},
   price: { type: Number, required: true },
-  //productImage: { type: String, required: false }
+  //productImageLocation: { type: String, required: false }
   productImage: {data: Buffer, 
     contentType: String }
 }, {

@@ -24,9 +24,9 @@ export default class CreateSearchQuery  extends Component{
     onSubmit(e){
         e.preventDefault();
 
-        const food_search = {description : this.state.search};
-        
-        axios.get("http://localhost:5000/searchfood/name",food_search).then(response =>{
+        const foodsearch = {description : this.state.search};
+        console.log(foodsearch);
+        axios.get("http://localhost:5000/searchfood/name",{params:foodsearch}).then(response =>{
           this.setState({fooditems: response.data}); 
           console.log(response.data);
       });
