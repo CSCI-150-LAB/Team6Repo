@@ -57,7 +57,7 @@ render() {
             placeholder="Find Dishes or Chefs"
             className="mr-sm-2"
           />
-          <Button variant="outline-success">Search</Button>
+          <Button href="testsearch" variant="outline-success">Search</Button>
           <Nav.Link href="testsearch"></Nav.Link>
         </Form>
       
@@ -81,7 +81,7 @@ render() {
             placeholder="Find Dishes or Chefs"
             className="mr-sm-2"
           />
-          <Button variant="outline-success">Search</Button>
+          <Button href="testsearch" variant="outline-success">Search</Button>
           <Nav.Link href="testsearch"></Nav.Link>
         </Form>
 
@@ -107,23 +107,8 @@ render() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
-          <Nav.Link href="register" hidden = {this.state.role == "buyer" || this.state.role == "seller"}>Register</Nav.Link>
-          <Nav.Link href="login" hidden = {this.state.role == "buyer" || this.state.role == "seller"}>Login</Nav.Link>
-          <Nav.Link href="maindishes">Dishes</Nav.Link>
-          <Nav.Link href="landingPage">Profile</Nav.Link>
-          <NavDropdown title="Help" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>
-            <NavDropdown.Item href="contactus">Contacts us</NavDropdown.Item>
-          </NavDropdown>
         </Nav>
-        <Form inline>
-          <FormControl
-            type="text"
-            placeholder="Find Dishes or Chefs"
-            className="mr-sm-2"
-          />
-          <Button variant="outline-success" href = '/testsearch'>Search</Button>
-        </Form>
+        {isAuthenticated ? userLink : guestLink}
       </Navbar.Collapse>
     </Navbar>
     )

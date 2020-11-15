@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./components/ultilities/setAuthenicatedToken";
-import { setCurrentUser, logoutUser, setUserRole } from "./components/actions/authActions";
+import { setCurrentUser, logoutUser } from "./components/actions/authActions";
 
 import Nav from "./components/nav.jsx"; 
 import CreateSeller from "./components/create-seller.component";
