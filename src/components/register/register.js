@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {registerUser} from "../actions/authActions";
 import classnames from "classnames";
-import {Form, FormGroup, Label, Input} from 'reactstrap';
+import {Form, FormGroup } from 'reactstrap';
 import Button from 'react-bootstrap/Button'
 class Register extends Component {
     constructor(props) {

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/authActions";
 import classnames from "classnames";
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup } from 'reactstrap';
 import Button from 'react-bootstrap/Button'
 
 
@@ -20,6 +20,7 @@ class Login extends Component {
       errors: {}
     };
   }
+
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {

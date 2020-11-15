@@ -1,6 +1,6 @@
 import {set_current_user, user_loading, set_user_role} from "../actions/definitions"; 
 
-const isEmpty = require ('is-empty');
+//const isEmpty = require ('is-empty');
 
 // in our reducer, we have to set our intial state for the tree. 
 // in a way, this is pretty much our constructor. 
@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
         case set_current_user: 
             return { 
                 ...state, 
-                isAuthenticated: !isEmpty(action.payload), 
+                isAuthenticated: true, 
                 user: action.payload
             }; 
         // case for taking care of the loading of the user. 
@@ -33,7 +33,6 @@ export default function(state = initialState, action) {
             return { 
                 ...state, 
                 role:action.payload, 
-                role: {}
             }
             
         default: 

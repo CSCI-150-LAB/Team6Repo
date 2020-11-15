@@ -12,11 +12,7 @@ const middleware = [thunk];
 // createStore() is a function that allows us to create the complete state tree out our application. 
 const store = createStore(
   rootReducer, 
-  initialState,                 // initial state is our action state
-  // 
-  //compose(
-    applyMiddleware(...middleware),
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // redux devtools extension
-  //)
+  initialState,                 
+  applyMiddleware(...middleware),
 );
 export default store;
