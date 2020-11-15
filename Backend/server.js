@@ -56,6 +56,9 @@ app.use('/routes/posts', postRoute);
 const fooditemRouter = require('./routes/fooditem');
 app.use('/fooditems',fooditemRouter);
 
+const foodSearchRouter = require('./routes/food_search');
+app.use('/searchfood', foodSearchRouter);
+
 // mongoDB connection
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});

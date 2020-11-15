@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./components/ultilities/setAuthenicatedToken";
-import { setCurrentUser, logoutUser, setUserRole } from "./components/actions/authActions";
+import { setCurrentUser, logoutUser } from "./components/actions/authActions";
 
 import Nav from "./components/nav.jsx"; 
 import CreateSeller from "./components/create-seller.component";
@@ -18,7 +18,7 @@ import contactus from "./components/contactus";
 import MainDishes from "./components/maindishes"; 
 import ImageUpload from "./components/imageupload.component";
 //import reviews from "./components/foodreview.component"; 
-
+import CreateSearchQuery from "./components/food_search_component"
 //future features
 //import Join from "./components/Join";
 //import Chat from "./components/Chat";
@@ -52,9 +52,8 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());         // Logout user and redirect them to the login screen. 
     window.location.href = "./login";
   }
+
 }
-
-
 
 function App() {
   return (
@@ -76,6 +75,8 @@ function App() {
 
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+       
+        <Route path = "/testsearch" exact component = {CreateSearchQuery} />
         <Switch> 
 
               <PrivateRoute exact path="/landingPage" component={landingPage} />

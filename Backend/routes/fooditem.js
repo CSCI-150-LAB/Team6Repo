@@ -69,11 +69,12 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/add", upload.single('productImage'), (req, res, next) => {
+  console.log(req.body);
   const fooditem = new FoodItem({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    //description: req.body.description,
-    //ethnicity: req.body.ethnicity,
+    description: req.body.description,
+    ethnicity: req.body.ethnicity,
     //cookingTime: req.body.cookingTime,
     //userID: req.body.userID,
     price: req.body.price,
@@ -89,6 +90,8 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
         FoodItemCreated: {
             name: result.name,
             price: result.price,
+            description: result.description,
+            ethnicity: result.ethnicity,
             _id: result._id,
             productImage: result.productImage,
             request: {
