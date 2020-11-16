@@ -3,48 +3,53 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../components/actions/authActions";
 import "../App.css";
+import { Form, FormGroup, Container, Row, Col } from "reactstrap";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
+import UserDP from "../imagesForMain/ronaldo.jpg"
 class landingPage extends Component {
-  onLogoutClick = e => {
+  onLogoutClick = (e) => {
     e.preventDefault();
     this.props.logoutUser();
-    window.location = '/home';
+    window.location = "/home";
   };
 
-
-
-  
-render() {
+  render() {
     const { user } = this.props.auth;
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Hey there, </b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            <h4>
-            <b>Your role is: </b> {user.role}
-            <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
+    return (
+      <div className="row">
+        <div className="col s12">
+          <Row>
+            <Col xs={10} md={10}>
+              <h4 class="text-center">
+              <b>Welcome, </b>
+                {user.name.split(" ")[0]}{" "} to your 
+    <b>{' '} {user.role}{' '}</b>
+                 Profile
+                <br />
+                {user.email}
+                
+              </h4>
+              <span>
+              <img
+                className="userdp"
+                src= {UserDP} 
+                alt="Ronaldo"
+                />
+              </span>
+            </Col>
+            <Col xs={1} md={1}>
+            <Button
+              className="btn-block"
+              variant="outline-success"
+              type="submit"
               onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
-              Logout
-            </button>
-            <img src = "/uploads/Mike and Birb.jpg" alt = ""/>
-          </div>
+              {"Logout"}{" "}
+            </Button>
+            </Col>
+          </Row>
+        
         </div>
       </div>
     );
@@ -52,12 +57,7 @@ return (
 }
 landingPage.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-  auth: state.auth
-});
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(landingPage);
+const mapStateToProps = (state) => ({ auth: state.auth });
+export default connect(mapStateToProps, { logoutUser })(landingPage);
