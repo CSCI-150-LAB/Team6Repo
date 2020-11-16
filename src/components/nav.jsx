@@ -45,6 +45,7 @@ render() {
     const userLink = ( // user roles
       <Fragment>
          <Nav className="ml-auto">
+         <Nav.Link href="tstupload" hidden = {this.state.role === "buyer"}>Upload Image</Nav.Link>
         <Nav.Link href="landingPage">Profile</Nav.Link>
         <Nav.Link href="maindishes">Dishes</Nav.Link>
         <NavDropdown title="Help" id="collasible-nav-dropdown">
@@ -65,7 +66,7 @@ render() {
      </Fragment>
     )
     
-    const guestLink = (
+    const guestLink = ( //guest roles 
       <Fragment>
          <Nav className="ml-auto">
           <Nav.Link href="register">Register</Nav.Link>
@@ -103,7 +104,7 @@ render() {
         alt="AuthenticChef"
       />
     </Navbar.Brand>
-    <Nav.Link href="tstupload" hidden = {this.state.role === "buyer"}>Upload Image</Nav.Link>
+    
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
