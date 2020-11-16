@@ -10,9 +10,9 @@ router.get("/", (req, res, next) => {
     .then(docs => {
       const response = {
         count: docs.length,
-        products: docs.map(doc => {
+        fooditems: docs.map(doc => {
           return {
-            name: doc.name,
+            chefname: doc.chefname,
             price: doc.price,
             productImage: doc.productImage,
             request: {
@@ -41,7 +41,7 @@ router.get("/", (req, res, next) => {
 router.get("/name", (req, res,next) => {
   const fdesc = req.query.description;
   console.log(fdesc);
-  FoodItem.findOne({description: fdesc}).then(fooditem => res.json(fooditem)).catch(err => res.status(420).json(err));
+  FoodItem.find({$text : {$search : fdesc}}).then(fooditem => res.json(fooditem)).catch(err => res.status(420).json(err));
 });
 
 module.exports = router;
