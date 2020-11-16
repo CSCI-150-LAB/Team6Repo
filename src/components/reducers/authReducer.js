@@ -1,4 +1,4 @@
-import {set_current_user, user_loading, set_user_role} from "../actions/definitions"; 
+import {set_current_user, user_loading} from "../actions/definitions"; 
 
 //const isEmpty = require ('is-empty');
 
@@ -8,18 +8,19 @@ const initialState = {
     isAuthenticated: false, 
     user: {}, 
     loading: false, 
-    role: {}
 }; 
 
 export default function(state = initialState, action) { 
     // the reason why we need a switch statement here is to determine how the state should change
     // based on actions given. 
+    console.log({state, action});
     switch(action.type){ 
         // case for when user logs in, we will acknowledge that we are authenticated and have recieved a payload. 
         case set_current_user: 
             return { 
                 ...state, 
                 isAuthenticated: true, 
+                loading: false, 
                 user: action.payload
             }; 
         // case for taking care of the loading of the user. 
@@ -29,11 +30,6 @@ export default function(state = initialState, action) {
                 loading:true
             };
         
-        case set_user_role: 
-            return { 
-                ...state, 
-                role:action.payload, 
-            }
             
         default: 
             return state; 

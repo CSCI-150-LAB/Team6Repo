@@ -4,6 +4,8 @@ import setAuthenticationToken from "../ultilities/setAuthenicatedToken";
 
 import {get_errors, set_current_user, user_loading, set_user_role} from "./definitions"; 
 
+// ACTIONS MUST HAVE TYPE PROPERTY!!!!!
+
 // register action
 export const registerUser = (userData, history) => dispatch => { 
     axios.post('http://localhost:5000/routes/users/register', userData)
@@ -25,8 +27,7 @@ export const loginUser = userData => dispatch => {
         localStorage.setItem("jwtToken", token);
         setAuthenticationToken(token);            // Set token to Auth header
         const decoded = jwt_decode(token);        // Decode token to get user data.
-        dispatch(setCurrentUser(decoded));        // Set current user
-        dispatch(setUserRole(decoded));           // set role 
+        dispatch(setCurrentUser(decoded));        // Set current user by sending action to store
         
         const userRole = decoded.role; 
         console.log(userRole); 
@@ -61,6 +62,7 @@ export const setUserLoading = () => {
     };
 };
 
+// Set user role 
 export const setUserRole = decoded => { 
     return { 
       type: set_user_role, 

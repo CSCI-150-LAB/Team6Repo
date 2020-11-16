@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../components/actions/authActions";
-import "../App.css";
 class landingPage extends Component {
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
     window.location = '/home';
   };
+
 
 
 
@@ -38,12 +38,11 @@ return (
                 letterSpacing: "1.5px",
                 marginTop: "1rem"
               }}
-              onClick={this.onLogoutClick}
+              onClick={this.onLogoutClick}   
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
               Logout
             </button>
-            <img src = "/uploads/Mike and Birb.jpg" alt = ""/>
           </div>
         </div>
       </div>
