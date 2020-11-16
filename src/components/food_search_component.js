@@ -8,6 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
+import Food1 from "../imagesForMain/cards/1.jpeg";
 /*
 const Fooditem = props =>(
   <tr>
@@ -39,6 +40,27 @@ const Fooditem = props =>(
   </tr>
 )
 
+const Test = props =>(
+    <Col>
+      <Card style={{ width: "18rem" }} className="first-col">
+        <Card.Img variant="top" src= {"/uploads/" + props.food.chefname + "_" + props.food.foodname + "undefined" + ".png"} />
+        <Card.Img variant="top" src= {"/uploads/" + props.food.chefname + "_" + props.food.foodname + "undefined" + ".jpeg"} />
+        <Card.Body>
+          <Card.Title>{props.food.foodname}</Card.Title>
+          <Card.Text>
+            Chef: {props.food.chefname}
+            <br />
+            description: {props.food.description} 
+            <br/>
+            Price: $ {props.food.price}
+          </Card.Text>
+          <Button variant="success">Add to cart</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  
+)
+
 export default class CreateSearchQuery  extends Component{
     
     constructor(props){
@@ -49,7 +71,8 @@ export default class CreateSearchQuery  extends Component{
 
         this.state = {
             search : '',
-            fooditems: []
+            fooditems: [],
+            trash : ''
         }
 
     }
@@ -59,9 +82,9 @@ export default class CreateSearchQuery  extends Component{
         search: e.target.value
         })
     }
-    /*
+    
     componentDidMount(){
-      axios.get("http://localhost:5000/searchfood/name",{params:{"description":"fried rice"}}).then(response =>{
+      axios.get("http://localhost:5000/searchfood/",{params:{"description":"fried rice"}}).then(response =>{
           if(response.data.length >= 0){
             this.setState({fooditems: response.data})
           }
@@ -69,16 +92,21 @@ export default class CreateSearchQuery  extends Component{
             console.log("NOTHING");
           }
       });
+      
     }
-    */
     debugpurp = e =>{
       console.log(this.state.fooditems);
     }
 
     foodList() {
-      return this.state.fooditems.map(currentfood => {
-        return <Fooditem food={currentfood} key={currentfood._id}/>;
-      })
+      if(this.state.fooditems.length >0){
+        console.log(this.state.fooditems.length);
+        console.log("/uploads/" + this.state.fooditems[0].chefname + "_" + this.state.fooditems[0].foodname + "undefined" +".png");
+        const dispFI = this.state.fooditems.map(currentfood => {
+          return <Test food={currentfood} key={currentfood._id}/>;
+        })
+        this.setState({trash: dispFI});   
+      }
     }
     onSubmit(e){
         e.preventDefault();
@@ -92,6 +120,7 @@ export default class CreateSearchQuery  extends Component{
           else{
             console.log("NOTHING");
           }
+          this.foodList();
       });
     }
 
@@ -115,24 +144,10 @@ export default class CreateSearchQuery  extends Component{
               </div>
             </form>
             <button onClick= {this.debugpurp}>testing</button>
-            <div>
-        <h3>Searched Results:</h3>
-        <table className="table">
-          <thead className="thead-light">
-            <tr>
-              <th>Chefname</th>
-              <th>Food Name</th>
-              <th>Description</th>
-              <th>Price</th>
-              <th>Image</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.foodList() }
-          </tbody>
-        </table>
-      </div>
+            <br/>
+            <br/>
+            {this.state.trash}
+            <br />
           </div>
         )
       }

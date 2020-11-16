@@ -16,7 +16,7 @@ import PrivateRoute from "./privateRoutes/privateRoute";
 import landingPage from "./landingPage/landingPage"
 import contactus from "./components/contactus"; 
 import MainDishes from "./components/maindishes"; 
-import ImageUpload from "./components/imageupload.component";
+import FoodUpload from "./components/food-upload.component";
 //import reviews from "./components/foodreview.component"; 
 import CreateSearchQuery from "./components/food_search_component";
 //future features
@@ -72,7 +72,7 @@ function App() {
         <Route path = "/howitworks" exact component = {HowitWorks} />
         <Route path = "/contactus" exact component = {contactus} />
         <Route path = "/maindishes" exact component = {MainDishes} />
-        <Route path = "/tstupload" exact component = {ImageUpload} />
+        <Route path = "/tstupload" exact component = {FoodUpload} />
 
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
