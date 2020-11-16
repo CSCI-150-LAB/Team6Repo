@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 
 import '../App.css'
 
-class FoodUpload extends Component{
+class ImageUpload extends Component{
     constructor(props){
         super(props);
 
-        this.onChangeChefName = this.onChangeChefName.bind(this);
+        this.onChangeName = this.onChangeName.bind(this);
         this.onChangePrice = this.onChangePrice.bind(this);
         this.fileSelectedHandler = this.fileSelectedHandler.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -19,8 +19,7 @@ class FoodUpload extends Component{
         this.onSubmit = this.onSubmit.bind(this);
         
         this.state = {
-            chefname : "",
-            foodname:"",
+            name : "",
             userId: "",
             description: "",
             ethnicity: "",
@@ -31,12 +30,12 @@ class FoodUpload extends Component{
 
     componentDidMount(){ 
       const {user} = this.props.auth;
-      this.setState({chefname: user.name});
+      this.setState({name: user.name});
     }
     
-    onChangeChefName(e){
+    onChangeName(e){
         this.setState({
-        chefname: e.target.value
+        name: e.target.value
         })
     }
     
@@ -64,15 +63,11 @@ class FoodUpload extends Component{
             productImage: e.target.files[0]
         })
     }
-    onChange = e => {
-      this.setState({[e.target.id]: e.target.value})
-    }
     // this is for local uploads. (e.g. randy's phone)
     fileUploadHandler = () =>{
         const newFoodItem = new FormData();
-        newFoodItem.append("chefname",this.state.chefname);
+        newFoodItem.append("name",this.state.name);
         newFoodItem.append("price",this.state.price);
-        newFoodItem.append("foodname",this.state.foodname);
         newFoodItem.append("productImage",this.state.productImage,this.state.productImage.name);
         newFoodItem.append("description",this.state.description);
         newFoodItem.append("ethnicity",this.state.ethnicity); 
@@ -83,17 +78,14 @@ class FoodUpload extends Component{
     }
     onSubmit(e){
       const newFoodItem = new FormData();
-      newFoodItem.append("chefname",this.state.chefname);
+      newFoodItem.append("name",this.state.name);
       newFoodItem.append("price",this.state.price);
-      newFoodItem.append("foodname",this.state.foodname);
       newFoodItem.append("productImage",this.state.productImage,this.state.productImage.name);
       newFoodItem.append("description",this.state.description);
       newFoodItem.append("ethnicity",this.state.ethnicity);
       console.log(newFoodItem);
       axios.post('http://localhost:5000/fooditems/add', newFoodItem).then(res => {
           console.log(res.data)});
-
-      
     }
     
     render() {
@@ -109,9 +101,9 @@ class FoodUpload extends Component{
               <span className="font-weight-bold"> Image Upload Testing</span> 
             </h1>
             <FormGroup>
-              <Label>Chef Name </Label>
+              <Label>Name </Label>
               <h3>
-                {this.state.chefname.split(" ")[0]}
+                {this.state.name.split(" ")[0]}
               </h3>
             </FormGroup>
             <FormGroup>
@@ -119,15 +111,9 @@ class FoodUpload extends Component{
               <Input type = "Number" placeholder = "Price" onChange = {this.onChangePrice}/>
             </FormGroup>
             <FormGroup>
-              <Label>Food Name </Label>
-              <Input type = "text" placeholder = "Name of Dish" id = "foodname" value = {this.state.foodname} onChange = {this.onChange}/>
-            </FormGroup>
-            <FormGroup>
               <Label>Description </Label>
               <Input type = "description" placeholder = "description of dish" onChange = {this.onChangeDescription}/>
-            </FormGroup>
-            <FormGroup>
-            <Label>ethnicity </Label>
+              <Label>ethnicity </Label>
               <Input type = "ethnicity" placeholder = "ethnicity" onChange = {this.onChangeEthnicity}/>
             </FormGroup>
             <FormGroup>
@@ -140,11 +126,11 @@ class FoodUpload extends Component{
       }
 }
 
-FoodUpload.propTypes = {
+ImageUpload.propTypes = {
   auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
   auth: state.auth
 });
 export default connect(
-  mapStateToProps)(FoodUpload);
+  mapStateToProps)(ImageUpload);

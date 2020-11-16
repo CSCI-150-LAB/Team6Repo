@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, '../public/uploads/');
   },
   filename: function(req, file, cb) {
-    cb(null, req.body.chefname + "_" + req.body.foodname + req.body._id + "." + file.mimetype.substring(6,file.mimetype.length));
+    cb(null, file.originalname);
   }
 });
 
@@ -69,17 +69,16 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/add", upload.single('productImage'), (req, res, next) => {
-  
+  console.log(req.body);
   const fooditem = new FoodItem({
     _id: new mongoose.Types.ObjectId(),
-    chefname: req.body.chefname,
-    foodname: req.body.foodname,
+    name: req.body.name,
     description: req.body.description,
     ethnicity: req.body.ethnicity,
     //cookingTime: req.body.cookingTime,
     //userID: req.body.userID,
     price: req.body.price,
-    productImage: req.file.path
+    //productImage: req.body.productImage
   });
   
   fooditem
@@ -89,13 +88,12 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
       res.status(201).json({
         message: "Created food item successfully",
         FoodItemCreated: {
-            chefname: result.chefname,
-            foodname:req.body.foodname,
+            name: result.name,
             price: result.price,
             description: result.description,
             ethnicity: result.ethnicity,
             _id: result._id,
-            productImage: result.productImage,
+            //productImage: result.productImage,
             request: {
                 type: 'GET',
                 url: "http://localhost:5000/fooditems/" + result._id
@@ -114,13 +112,13 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
 router.get("/:productId", (req, res, next) => {
   const id = req.params.productId;
   FoodItem.findById(id)
-    .select('chefname price _id productImage')
+    .select('name price _id productImage')
     .exec()
     .then(doc => {
       console.log("From database", doc);
       if (doc) {
         res.status(200).json({
-            fooditems: doc,
+            product: doc,
             request: {
                 type: 'GET',
                 url: 'http://localhost:3000/fooditems'
