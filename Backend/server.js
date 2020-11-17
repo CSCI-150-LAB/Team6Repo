@@ -4,13 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
 const passport = require('passport')
-const adminBro = require('admin-bro'); 
 const morgan = require("morgan"); 
-
-const AdminBroExpress = require('@admin-bro/express')
-const AdminBroMongoose = require('admin-bro-mongoose'); 
-
-
 
 require('dotenv').config();
 

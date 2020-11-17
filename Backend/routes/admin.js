@@ -6,17 +6,20 @@ const mongoose = require('mongoose');
 AdminBro.registerAdapter(AdminBroMongoose); 
 const FoodItem = require("../models/FoodItems");
 
+
 const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: '/admin',
   resources: [
-    { resource: FoodItem, options: {
-       // ...your options go here
-    }},
+    { resource: FoodItem
+    },
   ],
   branding: {
+    logo: 'https://i.redd.it/aoh4z6fwold21.png',
     companyName: 'Authentic Chef',
   },
+  component: AdminBro.bundle('../components/my-dashboard-component')
+  
 })
 
 const ADMIN = { 
