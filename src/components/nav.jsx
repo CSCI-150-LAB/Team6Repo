@@ -41,7 +41,6 @@ componentDidMount() {
 
 render() {
     const { isAuthenticated } = this.props.auth; 
-
     const userLink = ( // user roles
       <Fragment>
          <Nav className="ml-auto">
@@ -51,7 +50,7 @@ render() {
         <NavDropdown title="Help" id="collasible-nav-dropdown">
             <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>
             <NavDropdown.Item href="contactus">Contacts us</NavDropdown.Item>
-          </NavDropdown>
+        </NavDropdown>
         <Form inline>
           <FormControl
             type="text"

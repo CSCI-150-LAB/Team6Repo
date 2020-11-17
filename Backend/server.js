@@ -17,7 +17,7 @@ const app = express();
 
 const port = process.env.PORT || 5000; 
 
-app.use(bodyParser.json());
+
 app.use(cors());
 app.use(express.json());
 
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use('/fooditems', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -49,7 +49,7 @@ app.use('/routes/users', users);
 const adminRouter = require('./routes/admin');
 const { ApiClient } = require('admin-bro');
 app.use('/admin', adminRouter); 
-
+app.use(bodyParser.json());
 const postRoute = require('./routes/posts'); 
 app.use('/routes/posts', postRoute); 
 
