@@ -21,20 +21,22 @@ class landingPage extends Component {
   render() {
     const { user } = this.props.auth;
     return (
-      <div className="row">
-        <div className="col s12">
+      <div className="footerfix">
           <Row>
-            <Col xs={10} md={10}>
+            <Col xs={6} md={6}>
               <h4 className="text-center">
                 <b>Welcome, </b>
-                {user.name.split(" ")[0]} to your
-                <b> {user.role} </b>
-                Profile
+                {user.name.split(" ")[0]}. You are now logged in.
                 <br />
                 {user.email}
               </h4>
             </Col>
-            <Col xs={1} md={1}>
+            <Col xs={2} md={2}>
+            <Nav className="ml-auto">
+                <Nav.Link className="already" href="profile">View {user.role} Profile</Nav.Link>
+              </Nav>
+            </Col>
+            <Col xs={1} md={1} margin-right="50px">
               <Button
                 className="btn-block text-center"
                 variant="outline-success"
@@ -44,16 +46,9 @@ class landingPage extends Component {
                 {"Logout"}{" "}
               </Button>
             </Col>
+            
+            
           </Row>
-          <Row>
-            <Col>
-              <Nav className="ml-auto">
-                <Nav.Link href="profile">Profile</Nav.Link>
-                <Nav.Link href="orders">Orders</Nav.Link>
-              </Nav>
-            </Col>
-          </Row>
-        </div>
       </div>
     );
   }

@@ -31,6 +31,7 @@
   padding: 0.5rem;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+  font-size: 40px;
 }
 
 .navcolor{
@@ -49,4 +50,7 @@ input {
   margin-left: 10%;
   margin-top: 5%;
   margin-bottom: 5%;
+}
+.footerfix{
+ height: 500px;
 }
