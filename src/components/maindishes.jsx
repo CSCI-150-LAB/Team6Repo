@@ -40,7 +40,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food2} />
             <Card.Body>
               <Card.Title>CALIFORNIA ‘FRIED’ CHICKEN SANDWICH</Card.Title>
@@ -55,7 +55,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food3} />
             <Card.Body>
               <Card.Title>BUTTERNUT SQUASH CURRY</Card.Title>
@@ -69,7 +69,7 @@ function MainDishes() {
           </Card>
         </Col>
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food4} />
             <Card.Body>
               <Card.Title>
@@ -104,7 +104,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food1} />
             <Card.Body>
               <Card.Title>BUTTERNUT SQUASH CURRY</Card.Title>
@@ -119,7 +119,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food2} />
             <Card.Body>
               <Card.Title>CALIFORNIA ‘FRIED’ CHICKEN SANDWICH</Card.Title>
@@ -133,7 +133,7 @@ function MainDishes() {
           </Card>
         </Col>
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food3} />
             <Card.Body>
               <Card.Title>BUTTERNUT SQUASH CURRY</Card.Title>
@@ -165,7 +165,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food2} />
             <Card.Body>
               <Card.Title>CALIFORNIA ‘FRIED’ CHICKEN SANDWICH</Card.Title>
@@ -180,7 +180,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food3} />
             <Card.Body>
               <Card.Title>BUTTERNUT SQUASH CURRY</Card.Title>
@@ -194,7 +194,7 @@ function MainDishes() {
           </Card>
         </Col>
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food4} />
             <Card.Body>
               <Card.Title>
@@ -229,7 +229,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food1} />
             <Card.Body>
               <Card.Title>BUTTERNUT SQUASH CURRY</Card.Title>
@@ -244,7 +244,7 @@ function MainDishes() {
         </Col>
 
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food2} />
             <Card.Body>
               <Card.Title>CALIFORNIA ‘FRIED’ CHICKEN SANDWICH</Card.Title>
@@ -258,7 +258,7 @@ function MainDishes() {
           </Card>
         </Col>
         <Col>
-          <Card style={{ width: "18rem" }} className="first-col">
+          <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src={Food3} />
             <Card.Body>
               <Card.Title>BUTTERNUT SQUASH CURRY</Card.Title>
