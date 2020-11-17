@@ -41,6 +41,7 @@ componentDidMount() {
 
 render() {
     const { isAuthenticated } = this.props.auth; 
+   
 
     const userLink = ( // user roles
       <Fragment>

@@ -9,6 +9,7 @@ import { combineReducers } from "redux";
 
 export default combineReducers({ 
     auth: authReducer, 
-    errors: errReducer, 
-    cart: cartReducer
+    cart: cartReducer,
+    errors: errReducer
+  
 })

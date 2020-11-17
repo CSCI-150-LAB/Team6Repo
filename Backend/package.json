@@ -20,7 +20,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-generator": "^4.16.0",
-    "express-session": "^1.15.6",
+    "express-session": "^1.17.1",
     "filepond": "^4.23.1",
     "fs": "0.0.1-security",
     "i": "^0.3.6",

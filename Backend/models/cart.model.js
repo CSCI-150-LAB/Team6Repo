@@ -23,7 +23,6 @@ const cartSchema = new Schema({
       default: []
     }
 
-    
   
   }, {
     timestamps: true,
