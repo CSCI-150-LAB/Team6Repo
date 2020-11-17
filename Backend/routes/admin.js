@@ -1,14 +1,22 @@
 const AdminBro = require('admin-bro')
 const AdminBroExpress = require('@admin-bro/express')
-const AdminBroMongoose = require('admin-bro-mongoose'); 
+const AdminBroMongoose = require('@admin-bro/mongoose'); 
 
 const mongoose = require('mongoose');
 AdminBro.registerAdapter(AdminBroMongoose); 
-
+const FoodItem = require("../models/FoodItems");
 
 const adminBro = new AdminBro({
   databases: [mongoose],
   rootPath: '/admin',
+  resources: [
+    { resource: FoodItem, options: {
+       // ...your options go here
+    }},
+  ],
+  branding: {
+    companyName: 'Authentic Chef',
+  },
 })
 
 const ADMIN = { 
