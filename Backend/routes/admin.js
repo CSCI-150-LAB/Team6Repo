@@ -18,7 +18,7 @@ const adminBro = new AdminBro({
     logo: 'https://i.redd.it/aoh4z6fwold21.png',
     companyName: 'Authentic Chef',
   },
-  component: AdminBro.bundle('../components/my-dashboard-component')
+
   
 })
 
