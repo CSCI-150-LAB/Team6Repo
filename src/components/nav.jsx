@@ -46,7 +46,7 @@ render() {
     const userLink = ( // user roles
       <Fragment>
          <Nav className="ml-auto">
-         <Nav.Link href="tstupload" hidden = {this.state.role === "buyer"}>Upload Image</Nav.Link>
+         <Nav.Link href="tstupload" hidden = {this.state.role === "buyer"}>Add a dish</Nav.Link>
         <Nav.Link href="landingPage">Profile</Nav.Link>
         <Nav.Link href="maindishes">Dishes</Nav.Link>
         <NavDropdown title="Help" id="collasible-nav-dropdown">

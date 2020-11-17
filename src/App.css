@@ -43,3 +43,12 @@ input {
   width: 270px;
   height: 30px;
  }
+ .imgupload{
+   height: 700px;
+   width: 500px;
+   margin-left: 30%;
+   margin-top: 50px;
+ }
+ h2,h3{
+   color: darkgreen;
+ }

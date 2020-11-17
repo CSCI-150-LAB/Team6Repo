@@ -104,31 +104,28 @@ class FoodUpload extends Component{
                 <input type = "file" onChange = {this.fileSelectedHandler}/>
                 <button onClick={this.fileUploadHandler}>Upload Handle</button>
             </div>*/
-            <Form>
-            <h1>
-              <span className="font-weight-bold"> Image Upload Testing</span> 
-            </h1>
-            <FormGroup>
-              <Label>Chef Name </Label>
+            <Form className="imgupload">
+            <h2 className="text center">
+               Fill in the form to add a dish
+            </h2>
               <h3>
-                {this.state.chefname.split(" ")[0]}
+              Chef Name:  {this.state.chefname.split(" ")[0]}
               </h3>
-            </FormGroup>
             <FormGroup>
-              <Label>Price </Label>
-              <Input type = "Number" placeholder = "Price" onChange = {this.onChangePrice}/>
-            </FormGroup>
-            <FormGroup>
-              <Label>Food Name </Label>
+              <Label>Dish Name </Label>
               <Input type = "text" placeholder = "Name of Dish" id = "foodname" value = {this.state.foodname} onChange = {this.onChange}/>
             </FormGroup>
             <FormGroup>
               <Label>Description </Label>
-              <Input type = "description" placeholder = "description of dish" onChange = {this.onChangeDescription}/>
+              <Input type = "Description" placeholder = "What is this dish?" onChange = {this.onChangeDescription}/>
             </FormGroup>
             <FormGroup>
-            <Label>ethnicity </Label>
-              <Input type = "ethnicity" placeholder = "ethnicity" onChange = {this.onChangeEthnicity}/>
+            <Label>Cusine </Label>
+              <Input type = "Cusine" placeholder = "What cusine is it?" onChange = {this.onChangeEthnicity}/>
+            </FormGroup>
+            <FormGroup>
+              <Label>Price (in USD)</Label>
+              <Input type = "Number" placeholder = "Please enter the price of this dish in $$" onChange = {this.onChangePrice}/>
             </FormGroup>
             <FormGroup>
               <Label>File </Label>

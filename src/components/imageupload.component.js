@@ -96,9 +96,10 @@ class ImageUpload extends Component{
                 <input type = "file" onChange = {this.fileSelectedHandler}/>
                 <button onClick={this.fileUploadHandler}>Upload Handle</button>
             </div>*/
-            <Form>
+            <div className="imgupload">
+            <Form className="imgupload">
             <h1>
-              <span className="font-weight-bold"> Image Upload Testing</span> 
+              <span className="font-weight-bold text center"> Add a dish</span> 
             </h1>
             <FormGroup>
               <Label>Name </Label>
@@ -122,6 +123,7 @@ class ImageUpload extends Component{
             </FormGroup>
             <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.onSubmit}> {'Upload'} </Button> 
           </Form>
+          </div>
         )
       }
 }
