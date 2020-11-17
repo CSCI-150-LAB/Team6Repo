@@ -42,9 +42,8 @@ const Fooditem = props =>(
 
 const Test = props =>(
     <Col>
-      <Card style={{ width: "18rem" }} className="first-col">
-        <Card.Img variant="top" src= {"/uploads/" + props.food.chefname + "_" + props.food.foodname + "undefined" + ".png"} />
-        <Card.Img variant="top" src= {"/uploads/" + props.food.chefname + "_" + props.food.foodname + "undefined" + ".jpeg"} />
+      <Card style={{ width: "40rem" }} className="first-col">
+        <Card.Img variant="top" src= {"/uploads/" + props.food.chefname + "_" + props.food.foodname + "undefined." + props.food.productImageType} />
         <Card.Body>
           <Card.Title>{props.food.foodname}</Card.Title>
           <Card.Text>
@@ -58,7 +57,6 @@ const Test = props =>(
         </Card.Body>
       </Card>
     </Col>
-  
 )
 
 export default class CreateSearchQuery  extends Component{
@@ -72,7 +70,9 @@ export default class CreateSearchQuery  extends Component{
         this.state = {
             search : '',
             fooditems: [],
-            trash : ''
+            trash : '',
+            trash2: '',
+            trash3: ''
         }
 
     }
@@ -84,13 +84,14 @@ export default class CreateSearchQuery  extends Component{
     }
     
     componentDidMount(){
-      axios.get("http://localhost:5000/searchfood/",{params:{"description":"fried rice"}}).then(response =>{
+      axios.get("http://localhost:5000/searchfood/").then(response =>{
           if(response.data.length >= 0){
             this.setState({fooditems: response.data})
           }
           else{
             console.log("NOTHING");
           }
+          this.foodList();
       });
       
     }
@@ -101,7 +102,8 @@ export default class CreateSearchQuery  extends Component{
     foodList() {
       if(this.state.fooditems.length >0){
         console.log(this.state.fooditems.length);
-        console.log("/uploads/" + this.state.fooditems[0].chefname + "_" + this.state.fooditems[0].foodname + "undefined" +".png");
+        console.log("/uploads/" + this.state.fooditems[0].chefname + "_" + this.state.fooditems[0].foodname + "undefined" + this.state.fooditems[0].productImageType);
+
         const dispFI = this.state.fooditems.map(currentfood => {
           return <Test food={currentfood} key={currentfood._id}/>;
         })

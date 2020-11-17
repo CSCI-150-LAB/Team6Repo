@@ -79,9 +79,9 @@ router.post("/add", upload.single('productImage'), (req, res, next) => {
     //cookingTime: req.body.cookingTime,
     //userID: req.body.userID,
     price: req.body.price,
-    productImage: req.file.path
+    productImageType: req.file.mimetype.substring(6,req.file.mimetype.length),
+    //productImage: req.file.path
   });
-  
   fooditem
     .save()
     .then(result => {
