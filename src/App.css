@@ -3,7 +3,8 @@
   max-width: 300px;
   padding: 15px;
   margin: auto;
-  height: 100%;
+  margin-top: 30px;
+  height: 600px;
   color:darkgreen;
 }
 
@@ -54,4 +55,6 @@ input {
  h2,h3{
    color: darkgreen;
  }
- 
+ .form-fix{
+   margin-top: 100px;
+ }

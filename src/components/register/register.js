@@ -68,7 +68,7 @@ axios.post('http://localhost:5000/routes/users/register', newUser)
     render() {
         const {errors} = this.state;
         return (
-            <div className="container">
+            <div className="container form-fix">
                 <div className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/home" className="btn-flat waves-effect">

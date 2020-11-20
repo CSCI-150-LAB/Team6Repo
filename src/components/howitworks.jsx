@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 function HowitWorks(){
     return(
     <div id="howitworks">
-      <div className="howitworks">
+      <div className="howitworks form-fix">
         <h1 className="pt-3 text-center font-details pb-3">How it works</h1>
         <Container>
           <Row className="pt-3 pb-5 align-items-center">

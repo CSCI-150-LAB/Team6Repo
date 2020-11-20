@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 function ContactUs() {
   return (
-    <Form className="sign-up-form">
+    <Form className="sign-up-form form-fix">
       <h2 className="text-center"> Contact us</h2>
       <FormGroup>
         <Label>Name </Label>
