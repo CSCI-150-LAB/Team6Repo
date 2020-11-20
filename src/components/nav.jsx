@@ -94,7 +94,7 @@ render() {
 
     
     return(
-    <Navbar className="navbar" expand="lg">
+    <Navbar fixed="top" className="navbar" expand="lg">
       <Navbar.Brand href="home">
       <img
         src={Logo}

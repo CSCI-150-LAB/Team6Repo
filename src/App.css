@@ -35,8 +35,8 @@
 
 .navbar{
   background-color: white;
-  height: 70px;
-  margin-top: 25px;
+  height: 100px;
+  margin: 0;
 }
 .already{
   color: darkgreen;
