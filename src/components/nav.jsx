@@ -94,13 +94,12 @@ render() {
 
     
     return(
-    <Navbar className="navcolor" expand="lg">
+    <Navbar className="navbar" expand="lg">
       <Navbar.Brand href="home">
       <img
         src={Logo}
-        width="25%px"
-        height="5%"
-        margin="0 100px"
+        width="30%"
+        
         className="d-inline-block align-top"
         alt="AuthenticChef"
       />

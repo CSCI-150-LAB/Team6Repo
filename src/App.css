@@ -33,8 +33,10 @@
   box-decoration-break: clone;
 }
 
-.navcolor{
-  background-color:white
+.navbar{
+  background-color: white;
+  height: 70px;
+  margin-top: 25px;
 }
 .already{
   color: darkgreen;
@@ -52,3 +54,4 @@ input {
  h2,h3{
    color: darkgreen;
  }
+ 
