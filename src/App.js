@@ -17,8 +17,9 @@ import landingPage from "./landingPage/landingPage"
 import contactus from "./components/contactus"; 
 import MainDishes from "./components/maindishes"; 
 import FoodUpload from "./components/food-upload.component";
-//import reviews from "./components/foodreview.component"; 
+import reviews from "./components/foodreview.component"; 
 import CreateSearchQuery from "./components/food_search_component";
+import foodCart from "./components/food_cart.componenet";
 //future features
 //import Join from "./components/Join";
 //import Chat from "./components/Chat";
@@ -28,6 +29,7 @@ import Carousel from './components/carousel';
 
 import { Provider } from "react-redux";
 import store from "./components/store/store";
+import foodreviewComponent from './components/foodreview.component';
 
 
 /*
@@ -72,18 +74,21 @@ function App() {
         <Route path = "/howitworks" exact component = {HowitWorks} />
         <Route path = "/contactus" exact component = {contactus} />
         <Route path = "/maindishes" exact component = {MainDishes} />
-        <Route path = "/tstupload" exact component = {FoodUpload} />
-
+        <Route exact path = "/tstupload" exact component = {FoodUpload} />
+        <Route path = '/review/:id' component = {reviews} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route path = "/testsearch" exact component = {CreateSearchQuery} />
+        <Route path = "/testsearch/:search" component = {CreateSearchQuery} />
+        <Route path = "/myfoodcart" exact component = {foodCart} />
         <Switch>
               <PrivateRoute exact path="/landingPage" component={landingPage} />
         </Switch>
         
+        <footer>
+          <Footer/>
+        </footer>
         
-
-        <Footer/>
  
     </Router>
     </Provider>

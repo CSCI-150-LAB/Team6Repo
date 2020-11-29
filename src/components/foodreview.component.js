@@ -12,20 +12,22 @@ class reviews extends Component {
     constructor(props){
         super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
+        //this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeReview = this.onChangeReview.bind(this);
   
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             username : '',
-            review : ''
+            review : '',
+            foodID: ''
         }
     }
     
     componentDidMount(){ 
         const { user } = this.props.auth; 
-        this.setState = ({username: user.name})
+        this.setState({username: user.name});
+        this.setState({foodID: this.props.match.params.id});
     }
 
     onChangeReview(e){
@@ -33,7 +35,11 @@ class reviews extends Component {
       review: e.target.value
       })
     }
-
+    checkURI = e =>{
+        console.log(this.state.foodID);
+        
+        console.log(this.state.username);
+    }
     onSubmit(e){
         e.preventDefault();
 
@@ -79,7 +85,7 @@ class reviews extends Component {
                 </div>
 
                 <Button className="btn-block" variant="outline-success" type = "submit">Submit Review</Button>
-               
+                <Button className="btn-block" variant="outline-success" onClick = {this.checkURI}>Check My URI</Button>
             </form>
         );
     }

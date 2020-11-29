@@ -25,7 +25,8 @@ class FoodUpload extends Component{
             description: "",
             ethnicity: "",
             price: 0,
-            productImage: "" // location
+            productImage: "", // location
+            imageData: ""
         }
     }
 
@@ -62,13 +63,24 @@ class FoodUpload extends Component{
     fileSelectedHandler(e) {
         this.setState({
             productImage: e.target.files[0]
-        })
+        });
+        this.previewFile(e.target.files[0]);
     }
     onChange = e => {
       this.setState({[e.target.id]: e.target.value})
     }
+
+    previewFile = (file) =>{
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () =>{
+        this.setState({imageData: reader.result});
+      };
+      
+    }
     // this is for local uploads. (e.g. randy's phone)
-    fileUploadHandler = () =>{
+    fileUploadHandler = (e) =>{
+        e.preventDefault();
         const newFoodItem = new FormData();
         newFoodItem.append("chefname",this.state.chefname);
         newFoodItem.append("price",this.state.price);
@@ -76,12 +88,14 @@ class FoodUpload extends Component{
         newFoodItem.append("productImage",this.state.productImage,this.state.productImage.name);
         newFoodItem.append("description",this.state.description);
         newFoodItem.append("ethnicity",this.state.ethnicity); 
+        newFoodItem.append("data",this.state.imageData);
         console.log(newFoodItem);
         axios.post('http://10.0.0.253:5000/fooditems/add', newFoodItem).then(res => {
             console.log(res.data)})
         
     }
     onSubmit(e){
+      e.preventDefault();
       const newFoodItem = new FormData();
       newFoodItem.append("chefname",this.state.chefname);
       newFoodItem.append("price",this.state.price);
@@ -89,6 +103,7 @@ class FoodUpload extends Component{
       newFoodItem.append("productImage",this.state.productImage,this.state.productImage.name);
       newFoodItem.append("description",this.state.description);
       newFoodItem.append("ethnicity",this.state.ethnicity);
+      newFoodItem.append("data",this.state.imageData);
       console.log(newFoodItem);
       axios.post('http://localhost:5000/fooditems/add', newFoodItem).then(res => {
           console.log(res.data)});
@@ -130,9 +145,15 @@ class FoodUpload extends Component{
             <FormGroup>
               <Label>File </Label>
               <Input type = "file" className="form-control-file" onChange = {this.fileSelectedHandler}/>
-            </FormGroup>
-            <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.onSubmit}> {'Upload'} </Button> 
+            </FormGroup>   
+            <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.fileUploadHandler}> {'Upload'} </Button> 
+            <div>
+
+              {this.state.imageData && (<img src= {this.state.imageData} alt = "chosen" style = {{height:'300px'}} />)}
+            </div>
+          
           </Form>
+            
         )
       }
 }

@@ -18,9 +18,11 @@ class navbar extends Component {
 
   constructor(props) {
     super(props);
+    this.onChangeSearch = this.onChangeSearch.bind(this);
     this.state = {
       role: "", 
-      errors: {}
+      errors: {},
+      search: ""
     };
   }
 
@@ -28,6 +30,9 @@ static propTypes = {
   auth: PropTypes.object.isRequired
 }
 
+onChangeSearch(e){
+  this.setState({search: e.target.value});
+}
 
 componentDidMount() { 
   if (this.props.auth.isAuthenticated) {
@@ -48,6 +53,7 @@ render() {
          <Nav className="ml-auto">
          <Nav.Link href="tstupload" hidden = {this.state.role === "buyer"}>Add a dish</Nav.Link>
         <Nav.Link href="landingPage">Profile</Nav.Link>
+        <Nav.Link href="myfoodcart">Cart</Nav.Link>
         <Nav.Link href="maindishes">Dishes</Nav.Link>
         <NavDropdown title="Help" id="collasible-nav-dropdown">
             <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>
@@ -58,8 +64,9 @@ render() {
             type="text"
             placeholder="Find Dishes or Chefs"
             className="mr-sm-2"
+            onChange = {this.onChangeSearch}
           />
-          <Button href="testsearch" variant="outline-success">Search</Button>
+          <Button href={this.state.search? "http://localhost:3000/testsearch/" + this.state.search: "http://localhost:3000/testsearch"} variant="outline-success">Search</Button>
           <Nav.Link href="testsearch"></Nav.Link>
         </Form>
       
@@ -82,8 +89,10 @@ render() {
             type="text"
             placeholder="Find Dishes or Chefs"
             className="mr-sm-2"
+            onChange = {this.onChangeSearch}
+            onKeyPress
           />
-          <Button href="testsearch" variant="outline-success">Search</Button>
+          <Button href={this.state.search? "http://localhost:3000/testsearch/" + this.state.search: "http://localhost:3000/testsearch"} variant="outline-success">Search</Button>
           <Nav.Link href="testsearch"></Nav.Link>
         </Form>
 
@@ -94,8 +103,8 @@ render() {
 
     
     return(
-    <Navbar fixed="top" className="navbar" expand="lg">
-      <Navbar.Brand href="home">
+    <Navbar className="navcolor" expand="lg">
+      <Navbar.Brand href= "http://localhost:3000/home">
       <img
         src={Logo}
         width="30%"

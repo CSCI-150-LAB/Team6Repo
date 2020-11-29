@@ -12,8 +12,10 @@ const foodItemSchema = new Schema({
   //userID: { type: Schema.Types.name, ref: 'userSchema'},
   price: { type: Number, required: true },
   productImageType: { type: String, required: false },
-  productImage: {data: Buffer, 
-    contentType: String }
+  productImage: {data: Buffer,  contentType: String },
+  productReviews: {type: Array, required: false, default: []},
+  rating: {type: Number, required: false, default: 0},
+  sponsored:{type: Boolean, required:false, default: false}
 }, {
   timestamps: true,
 });

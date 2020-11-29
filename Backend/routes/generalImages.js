@@ -23,7 +23,7 @@ const fileFilter = (req, file, cb) => {
   } else {
     cb(null, false);
   }
-};
+}; 
 
 const upload = multer({
   storage: storage,

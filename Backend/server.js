@@ -56,7 +56,18 @@ app.use('/searchfood', foodSearchRouter);
 
 const foodcartRouter = require('./routes/foodCart'); 
 app.use('/foodcart', foodcartRouter); 
+/*
+const cloudRouter = require('./routes/cloudinaryupload');
+app.use('/cloudupload',cloudRouter);
+*/
+//cloudinary
 
+const cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET 
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

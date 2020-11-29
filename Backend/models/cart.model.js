@@ -6,8 +6,13 @@ const Schema = mongoose.Schema;
 
 const cartSchema = new Schema({
 
+    userID:{
+      type: String,
+      required: true,
+      unique: true
+    },
 
-    name:{
+    username:{
       type: String, 
       required: true, 
       minlength: 1
@@ -18,12 +23,9 @@ const cartSchema = new Schema({
       required: true
     },
   
-    foodItems: { 
-      type: Array ,
-      default: []
-    }
+    foodItems: [{type: Object}],
 
-  
+    testing: {type: Array,required: true, default: [{}]}
   }, {
     timestamps: true,
   });
