@@ -1,6 +1,5 @@
 import authReducer from "./authReducer";
 import errReducer from "./errReducer";
-import cartReducer from "./cartReducer"; 
 import { combineReducers } from "redux";
 
 
@@ -9,7 +8,6 @@ import { combineReducers } from "redux";
 
 export default combineReducers({ 
     auth: authReducer, 
-    cart: cartReducer,
     errors: errReducer
   
 })

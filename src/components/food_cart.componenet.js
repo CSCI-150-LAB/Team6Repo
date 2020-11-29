@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 //import { getPrice } from "../actions/cartActions";
 
@@ -51,6 +52,9 @@ class foodCart  extends Component{
           this.setState({price:temp});
         }
       });
+
+      //const script = document.createElement("https://www.paypal.com/sdk/js?client-id=AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX"); 
+      //script.src = 
     }
     deleteFoodItem(foodID){
 
@@ -68,11 +72,15 @@ class foodCart  extends Component{
   doPrice(){
 
   }
-
+  /*
+  paypalfunc = e =>{
+     <script src="https://www.paypal.com/sdk/js?client-id=AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX"></script>
+  }
+*/
   render() {
     return (
       <div>
-        <h3>Welcom to your shopping cart, {this.props.auth.user.username}</h3>
+        <h3>Welcome to your shopping cart, {this.props.auth.user.name}</h3>
         <table className="table">
           <thead className="thead-light">
             <tr>
@@ -88,7 +96,11 @@ class foodCart  extends Component{
           </tbody>
         </table>
         <h2>Price: {this.state.price}</h2>
+        <PayPalScriptProvider options={{ "client-id": "AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX" }}>
+            <PayPalButtons style={{ layout: "horizontal" }} />
+        </PayPalScriptProvider>
       </div>
+      
     );
   }
 }
