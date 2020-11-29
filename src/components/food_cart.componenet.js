@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import ".././App.css";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import {PayPalButton} from "react-paypal-button-v2"; 
 
-//import { getPrice } from "../actions/cartActions";
 
 const FoodItems = props => (
   <tr>
@@ -34,6 +28,7 @@ class foodCart  extends Component{
           userCart: '',
           fooditems:[],
           price: 0,
+          tax: 0,
           foodlist:[]
         }
     }
@@ -49,12 +44,16 @@ class foodCart  extends Component{
           for(var i = 0; i < response.data.foodItems.length; i++){
             temp = response.data.foodItems[i].price + temp;
           }
+          const currentPrice = temp;
+          var tax = (temp * 0.07);
+          tax = Math.floor(tax * 100) / 100; 
+          const newPrice = currentPrice + tax; 
+          this.setState({tax:tax});
           this.setState({price:temp});
         }
       });
 
-      //const script = document.createElement("https://www.paypal.com/sdk/js?client-id=AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX"); 
-      //script.src = 
+
     }
     deleteFoodItem(foodID){
 
@@ -72,11 +71,7 @@ class foodCart  extends Component{
   doPrice(){
 
   }
-  /*
-  paypalfunc = e =>{
-     <script src="https://www.paypal.com/sdk/js?client-id=AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX"></script>
-  }
-*/
+ 
   render() {
     return (
       <div>
@@ -95,10 +90,18 @@ class foodCart  extends Component{
             {this.foodList()}
           </tbody>
         </table>
-        <h2>Price: {this.state.price}</h2>
-        <PayPalScriptProvider options={{ "client-id": "AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX" }}>
-            <PayPalButtons style={{ layout: "horizontal" }} />
-        </PayPalScriptProvider>
+        <h2>Price: ${this.state.price}</h2>
+        <h2>Tax: ${this.state.tax}</h2>
+        <h2>Total Price: ${this.state.price + this.state.tax}</h2>
+
+        <PayPalButton 
+          amount = {this.state.price + this.state.tax}
+          onSuccess={(details, data) =>{
+            alert("Transaction completed by " + this.props.auth.user.name);
+          }}
+        />
+
+
       </div>
       
     );
