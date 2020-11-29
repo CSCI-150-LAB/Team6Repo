@@ -33,6 +33,8 @@ User.findOne({ email: req.body.email }).then(user => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
+        address: req.body.address,
+        phone_number: req.body.phone_number,
         password: req.body.password, 
         role: req.body.role
       });

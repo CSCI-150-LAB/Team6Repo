@@ -14,6 +14,8 @@ class Register extends Component {
         this.state = {
             name: "",
             email: "",
+            address: "",
+            phone_number: "",
             password: "",
             password2: "",
             role: "",
@@ -42,6 +44,8 @@ class Register extends Component {
         const newUser = {
             name: this.state.name,
             email: this.state.email,
+            address: this.state.address,
+            phone_number: this.state.phone_number,
             password: this.state.password,
             password2: this.state.password2,
             role: this.state.role
@@ -121,6 +125,44 @@ axios.post('http://localhost:5000/routes/users/register', newUser)
                                     type="email"
                                     className={
                                         classnames("", {invalid: errors.email})
+                                    }/>
+                            </FormGroup>
+
+                            <FormGroup>
+                                <label htmlFor="address">Address</label>
+                                <br />
+                                <input onChange={
+                                        this.onChange
+                                    }
+                                    value={
+                                        this.state.address
+                                    }
+                                    error={
+                                        errors.address
+                                    }
+                                    id="address"
+                                    type="address"
+                                    className={
+                                        classnames("", {invalid: errors.email})
+                                    }/>
+                            </FormGroup>
+
+                            <FormGroup>
+                                <label htmlFor="phone_number">Phone Number</label>
+                                <br />
+                                <input onChange={
+                                        this.onChange
+                                    }
+                                    value={
+                                        this.state.phone_number
+                                    }
+                                    error={
+                                        errors.phone_number
+                                    }
+                                    id="phone_number"
+                                    type="phone_number"
+                                    className={
+                                        classnames("", {invalid: errors.phone_number})
                                     }/>
                             </FormGroup>
 
