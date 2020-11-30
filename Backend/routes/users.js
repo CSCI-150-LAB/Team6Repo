@@ -20,12 +20,14 @@ const { route } = require("./admin");
   the data base to search for the email and see if it exists. 
 */
 router.post("/register", (req, res) => {
-
 // takes the variables/constants from the function. 
+console.log(req.body);
 const { err, isValid } = validateRegInput(req.body);
   if (!isValid) {
+    console.log("messed up here");
     return res.status(400).json(err);
   }     
+  console.log("NOW HERE");
 User.findOne({ email: req.body.email }).then(user => {
     if (user) {
       return res.status(400).json({ email: "Email already exists, try another" });
@@ -69,6 +71,8 @@ const { err, isValid } = validateLogInput(req.body);
     return res.status(400).json(err);
   }
   const email = req.body.email;
+  const address = req.body.address;
+  const phone_number = req.body.phone_number;
   const password = req.body.password;
 
 User.findOne({ email }).then(user => {
@@ -85,6 +89,9 @@ User.findOne({ email }).then(user => {
         const payload = {
           id: user.id,
           name: user.name,  
+          address: user.address,
+          email: user.email,
+          phone_number: user.phone_number,
           role: user.role
         };
         // create jwt

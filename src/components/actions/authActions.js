@@ -8,12 +8,13 @@ import {get_errors, set_current_user, user_loading, set_user_role} from "./defin
 
 // register action
 export const registerUser = (userData, history) => dispatch => { 
+  
     axios.post('http://localhost:5000/routes/users/register', userData)
     .then(res => history.push("/login")) // if successful register, send to login page
     .catch(err => dispatch({
         type: get_errors, 
         payload: err.payload.data
-    }))
+    }));
 }
 
 // login action

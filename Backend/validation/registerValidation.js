@@ -34,30 +34,28 @@ module.exports = function validateRegisterInput(data) {
 // Validator function to check if name is empty
   if (Validator.isEmpty(data.name)) {
     err.name = "Name field is required";
+    console.log("name error");
   }
 
 // Validator function to check if email is empty
   if (Validator.isEmpty(data.email)) {
     err.email = "Email field is required";
+    console.log("2 error");
   } else if (!Validator.isEmail(data.email)) {
     err.email = "Email is invalid";
+    console.log("3 error");
   }
 
 // Validator function to check if address is empty
 if (Validator.isEmpty(data.address)) {
   err.address = "Address field is required";
-} else if (!Validator.isEmpty(data.address)) {
-  err.address = "Address is invalid";
+  
 }
 
 // Validator function to check if phone number is empty
 if (Validator.isEmpty(data.phone_number)) {
   err.phone_number = "Phone number field is required";
-} else if (!Validator.isEmpty(data.phone_number)) {
-  err.phone_number = "Phone number is invalid";
 }
-
-
 
 
 
