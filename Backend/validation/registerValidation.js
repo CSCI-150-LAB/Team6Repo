@@ -13,6 +13,10 @@ module.exports = function validateRegisterInput(data) {
         else { data.name ==  ""; }
   if(!isEmpty(data.email)){ data.email == data.email; }
         else { data.email ==  ""; }
+  if(!isEmpty(data.address)){ data.address == data.address; }
+        else { data.address ==  ""; }
+  if(!isEmpty(data.phone_number)){ data.phone_number == data.phone_number; }
+        else { data.phone_number ==  ""; }
   if(!isEmpty(data.password)){ data.password == data.password; }
         else { data.password ==  ""; }
   if(!isEmpty(data.password2)){ data.password2 == data.password2; }
@@ -30,14 +34,30 @@ module.exports = function validateRegisterInput(data) {
 // Validator function to check if name is empty
   if (Validator.isEmpty(data.name)) {
     err.name = "Name field is required";
+    console.log("name error");
   }
 
 // Validator function to check if email is empty
   if (Validator.isEmpty(data.email)) {
     err.email = "Email field is required";
+    console.log("2 error");
   } else if (!Validator.isEmail(data.email)) {
     err.email = "Email is invalid";
+    console.log("3 error");
   }
+
+// Validator function to check if address is empty
+if (Validator.isEmpty(data.address)) {
+  err.address = "Address field is required";
+  
+}
+
+// Validator function to check if phone number is empty
+if (Validator.isEmpty(data.phone_number)) {
+  err.phone_number = "Phone number field is required";
+}
+
+
 
 // Validator function to check if password is empty
   if (Validator.isEmpty(data.password)) {

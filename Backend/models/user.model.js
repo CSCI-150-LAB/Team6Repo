@@ -32,6 +32,19 @@ const userSchema = new Schema({
     unique: true
   },
 
+  address:{
+    type: String,
+    required: true,
+    unique: false
+  },
+
+  phone_number:{
+    type: String,
+    required: true,
+    unique: true
+  },
+
+
   role: { 
     type: String, 
     require: true, 

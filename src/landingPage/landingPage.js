@@ -27,6 +27,24 @@ return (
                 <span style={{ fontFamily: "monospace" }}></span>
               </p>
             </h4>
+            <h4>
+            <b>Address: </b> {user.address}
+            <p className="flow-text grey-text text-darken-1">
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+            </h4>
+            <h4>
+            <b>Phone Number: </b> {user.phone_number}
+            <p className="flow-text grey-text text-darken-1">
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+            </h4>
+            <h4>
+            <b>Email: </b> {user.email}
+            <p className="flow-text grey-text text-darken-1">
+                <span style={{ fontFamily: "monospace" }}></span>
+              </p>
+            </h4>
             <button
               style={{
                 width: "150px",
