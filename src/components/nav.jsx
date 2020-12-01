@@ -51,13 +51,13 @@ render() {
     const userLink = ( // user roles
       <Fragment>
          <Nav className="ml-auto">
-         <Nav.Link href="tstupload" hidden = {this.state.role === "buyer"}>Add a dish</Nav.Link>
-        <Nav.Link href="landingPage">Profile</Nav.Link>
-        <Nav.Link href="myfoodcart">Cart</Nav.Link>
-        <Nav.Link href="maindishes">Dishes</Nav.Link>
+         <Nav.Link href="http://localhost:3000/tstupload" hidden = {this.state.role === "buyer"}>Add a dish</Nav.Link>
+        <Nav.Link href="http://localhost:3000/landingPage">Profile</Nav.Link>
+        <Nav.Link href="http://localhost:3000/myfoodcart">Cart</Nav.Link>
+        <Nav.Link href="http://localhost:3000/maindishes">Dishes</Nav.Link>
         <NavDropdown title="Help" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>
-            <NavDropdown.Item href="contactus">Contacts us</NavDropdown.Item>
+            <NavDropdown.Item href="http://localhost:3000/howitworks">How It Works</NavDropdown.Item>
+            <NavDropdown.Item href="http://localhost:3000/contactus">Contacts us</NavDropdown.Item>
           </NavDropdown>
         <Form inline>
           <FormControl
@@ -77,12 +77,12 @@ render() {
     const guestLink = ( //guest roles 
       <Fragment>
          <Nav className="ml-auto">
-          <Nav.Link href="register">Register</Nav.Link>
-          <Nav.Link href="login">Login</Nav.Link>
-          <Nav.Link href="maindishes">Dishes</Nav.Link>
+          <Nav.Link href="http://localhost:3000/register">Register</Nav.Link>
+          <Nav.Link href="http://localhost:3000/login">Login</Nav.Link>
+          <Nav.Link href="http://localhost:3000/maindishes">Dishes</Nav.Link>
           <NavDropdown title="Help" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="howitworks">How It Works</NavDropdown.Item>
-            <NavDropdown.Item href="contactus">Contacts us</NavDropdown.Item>
+            <NavDropdown.Item href="http://localhost:3000/howitworks">How It Works</NavDropdown.Item>
+            <NavDropdown.Item href="http://localhost:3000/contactus">Contacts us</NavDropdown.Item>
           </NavDropdown>
           <Form inline>
           <FormControl

@@ -12,7 +12,6 @@ router.get("/", (req, res, next) => {
 //finds by id
 router.get("/getcart/:userID", (req, res,next) => {
     const userID = req.params.userID;
-    console.log(req);
     cart.findOne({_id:userID}).then(checkC =>{
       if(checkC){
         console.log("THERE IS A CART");
