@@ -20,6 +20,10 @@ import FoodUpload from "./components/food-upload.component";
 import reviews from "./components/foodreview.component"; 
 import CreateSearchQuery from "./components/food_search_component";
 import foodCart from "./components/food_cart.componenet";
+import privacypolicy from "./components/privacypolicy";
+import ourstory from "./components/ourstory";
+import rulespage from "./components/rulespage";
+
 //future features
 //import Join from "./components/Join";
 //import Chat from "./components/Chat";
@@ -86,6 +90,10 @@ function App() {
         </Switch>
         
         <footer>
+        <Route exact path="/privacypolicy" component={privacypolicy} /> 
+        <Route exact path="/ourstory" component={ourstory} /> 
+        <Route exact path="/contactus" component={contactus} /> 
+        <Route exact path="/rulespage" component={rulespage} />
           <Footer/>
         </footer>
         
