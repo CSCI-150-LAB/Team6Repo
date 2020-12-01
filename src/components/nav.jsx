@@ -36,9 +36,9 @@ onChangeSearch(e){
 
 componentDidMount() { 
   if (this.props.auth.isAuthenticated) {
-    const { user } = this.props.auth; 
-    this.setState({role: user.role}); 
-  }
+   const { user } = this.props.auth; 
+   this.setState({role: user.role}); 
+    }
   else{
     this.setState({role:"guest"});
   }
@@ -46,7 +46,6 @@ componentDidMount() {
 
 render() {
     const { isAuthenticated } = this.props.auth; 
-   
 
     const userLink = ( // user roles
       <Fragment>
@@ -72,7 +71,7 @@ render() {
       
         </Nav>
      </Fragment>
-    )
+    ) 
     
     const guestLink = ( //guest roles 
       <Fragment>
