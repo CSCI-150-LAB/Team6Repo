@@ -98,6 +98,8 @@ class foodCart  extends Component{
           amount = {this.state.price + this.state.tax}
           onSuccess={(details, data) =>{
             alert("Transaction completed by " + this.props.auth.user.name);
+
+            
           }}
         />
 
