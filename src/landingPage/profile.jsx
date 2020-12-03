@@ -1,8 +1,7 @@
 import "../App.css";
 import React from 'react';
-import Button from "react-bootstrap/Button";
 //import UserDP from "../imagesForMain/ronaldo.jpg";
-import { Row, Col, Table, Badge, Media } from "reactstrap";
+import { Row, Col, Table, Badge } from "reactstrap";
 
 const Example = () => {
     return (

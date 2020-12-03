@@ -1,6 +1,9 @@
+/*
 import Slide1 from "./images/img1.jpg";
 import Slide2 from "./images/img2.jpg";
 import Slide3 from "./images/img3.jpg";
+*/
+import video1 from "./videos/video1.mp4"
 import React from 'react';
 import '.././App.css';
 
@@ -15,11 +18,9 @@ function home(){
     return(
         <Carousel>
             <Carousel.Item>
-                <img
-                className="d-block w-100 custom-img"
-                src={Slide1}
-                alt="Indian Food"
-                />
+                <video ref = "vid1" src = {video1} type= "video/mp4">
+
+                </video>
                 <Carousel.Caption>
                 <h1>Indian Food</h1>
                 <h3>Experience the diversity of India through amazing homemade food with locals!</h3>
