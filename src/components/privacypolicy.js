@@ -4,7 +4,7 @@ import "./privacypolicy.css"
 export default class privacypolicy extends Component {
     render() {
         return (
-            <div id="privacypolicy">
+            <div id="privacypolicy" className="form-fix">
             <h3>Privacy Policy</h3>
             <p class="text-center">Authentic Chef provides an online platform through its website https://www.AuthenticChef.com, that connects 
             customers to purchase food from home cooks by either pick up or delivery (collectively, 

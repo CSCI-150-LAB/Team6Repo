@@ -6,7 +6,7 @@ export default class ourstory extends Component {
         return (
             <div>
                 <div class="b"></div>
-                <h1 class = "heading" style={{ color: '#0c9e06' }}>Who Are We?</h1>
+                <h1 className = "heading form-fix" style={{ color: '#0c9e06' }}>Who Are We?</h1>
                 <div class="a text-center text-secondary">Welcome to Authentic Chef, your number one source for authentic 
                 meals. We're dedicated to giving you the very best of food that is created by home chefs, with a 
                 focus on dependability, customer service, and uniqueness. Founded in 2020 by Koryale Brooks, Narendra Mannan,
