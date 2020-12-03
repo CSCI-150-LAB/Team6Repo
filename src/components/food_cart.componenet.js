@@ -4,6 +4,7 @@ import ".././App.css";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {PayPalButton} from "react-paypal-button-v2"; 
+import Button from "react-bootstrap/Button";
 
 
 const FoodItems = props => (
@@ -13,7 +14,7 @@ const FoodItems = props => (
     <td>{props.fooditem.description}</td>
     <td>${props.fooditem.price}</td>
     <td>
-      <a href="#" onClick={() => { props.deleteFoodItem(props.fooditem._id) }}>delete</a>
+      <Button onClick={() => { props.deleteFoodItem(props.fooditem._id) }}>delete</Button>
     </td>
   </tr>
 )
@@ -21,9 +22,8 @@ const FoodItems = props => (
 class foodCart  extends Component{
 
     constructor(props){ 
-        super(props); 
-        
-        //this.deleteFoodItem = this.deleteFoodItem.bind(this);
+        super(props);
+        this.deleteFoodItem = this.deleteFoodItem.bind(this);
         this.state ={
           userCart: '',
           fooditems:[],
@@ -55,7 +55,22 @@ class foodCart  extends Component{
     }
     
     deleteFoodItem(foodID){
-      //axios.delete("http://localhost:5000/foodcart/deletefromcart/" + this.props.auth.user.id,{})
+      
+      axios.post("http://localhost:5000/foodcart/deletefromcart/" + this.props.auth.user.id,{fooditem:foodID}).then(response =>{
+        console.log(response.data);
+      });
+      this.setState({
+        fooditems: this.state.fooditems.filter(el => el._id !== foodID)
+      })
+      var temp=0;
+      for(var i = 0; i < this.state.fooditems.length; i++){
+        temp = this.state.fooditems[i].price + temp;
+      }
+     
+      var tax = (temp * 0.07);
+      tax = Math.floor(tax * 100) / 100; 
+      this.setState({tax:tax});
+      this.setState({price:temp});
     }
   onSubmit= e => {  
         e.preventDefault(); 

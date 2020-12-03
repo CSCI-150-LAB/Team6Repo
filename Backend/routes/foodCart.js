@@ -60,7 +60,7 @@ router.post("/addtocart/:userID", (req, res,next) => {
     const userID = req.params.userID;
     const fooditemID = req.body.fooditem;
   
-  
+    console.log("GOT HERE");
     cart.findOne({_id:userID}).then(checkC =>{
       if(checkC){
         FoodItem.findById(fooditemID).select('chefname price _id description foodname ethnicity').exec().then(result => {
@@ -78,14 +78,14 @@ router.post("/addtocart/:userID", (req, res,next) => {
           userID: userID,
           username: req.body.username,
           price: 0,
-          foodItems: [{}]
+          foodItems: []
         });
     
         foodcart.save().then(
           () =>{
             FoodItem.findById(fooditemID).select('chefname price _id description foodname ethnicity').exec().then(result => {
               console.log("Found the Item!");
-              console.log(result);
+              const foodItemincart = result;
               cart.updateOne({_id:userID},{$push:{foodItems:result}},{upsert:true}).then(result2 =>{
                 console.log("updated Successfully");
                 res.json("GOOD PUSH, CHECK NOW!");
@@ -99,15 +99,6 @@ router.post("/addtocart/:userID", (req, res,next) => {
       }
     })
 });
-
-  router.post("/:foodid", (req, res,next) => {
-    const foodName = req.body._id;
-    console.log(foodName);
-    FoodItem.findById(foodName)
-    .select("price")
-    .then(foodprice => res.json(foodprice))
-    .catch(err => res.status(420).json(err));
-  });
   router.delete("/deletecart/:userID", (req, res,next) => {
     const userID = req.params.userID;
     cart.findByIdAndDelete(userID).then(result => {
@@ -130,16 +121,21 @@ router.post("/addtocart/:userID", (req, res,next) => {
     });*/
 
   });
-  router.post("/deletefood/:foodid", (req, res,next) => {
+  router.post("/deletefromcart/:userID", (req, res,next) => {
     const userID = req.params.userID;
     const fooditemID = req.body.fooditem;
-    cart.findById(userID).then(result => {
+    console.log("DELETE FOOD ITEM "+ fooditemID);
+    FoodItem.findById(fooditemID).select('chefname price _id description foodname ethnicity').exec().then(result => {
+      console.log("Found the Item!");
       console.log(result);
-      res.json("found it");
+      cart.updateOne({userID:userID,"foodItems":result},{$pull:{foodItems:result}}).then(result2 =>{
+        console.log("Removed item");
+        console.log(result2);
+        res.json("Item removed");
+      });    
     });
-    
-
   });
+
   router.post("/addfood/:userID", (req, res,next) => {
     const userID = req.params.userID;
     const fooditemID = req.body.fooditem;

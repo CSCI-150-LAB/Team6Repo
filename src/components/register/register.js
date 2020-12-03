@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {registerUser} from "../actions/authActions";
 import classnames from "classnames";
-import {Form, FormGroup } from 'reactstrap';
-import Button from 'react-bootstrap/Button'
+import {ButtonToggle, Form, FormGroup } from 'reactstrap';
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -37,7 +38,9 @@ class Register extends Component {
     onChange = e => {
         this.setState({[e.target.id]: e.target.value})
     }
-
+    check = e =>{
+        console.log(this.state.role);
+    }
 
     onSubmit = e => {
         e.preventDefault();
@@ -72,7 +75,7 @@ axios.post('http://localhost:5000/routes/users/register', newUser)
     render() {
         const {errors} = this.state;
         return (
-            <div className="container form-fix">
+            <div>
                 <div className="row">
                     <div className="col s8 offset-s2">
                         <Link to="/home" className="btn-flat waves-effect">
@@ -214,34 +217,29 @@ axios.post('http://localhost:5000/routes/users/register', newUser)
                             <FormGroup>
                                 <label htmlFor="role">Seller or Buyer</label>
                                 <br />
-                                <input onChange={
-                                        this.onChange
-                                    }
-                                    value={
-                                        this.state.role
-                                    }
-                                    error={
-                                        errors.role
-                                    }
-                                    id="role"
-                                    type="role"
-                                    placeholder="Enter buyer or seller"
-                                    className={
-                                        classnames("", {invalid: errors.role})
-                                    }/>
-                                <span className="red-text">
-                                    {
-                                    errors.name
-                                }</span>
+                                <select value={this.state.role} id = "role" onChange={this.onChange}>
+                                    <option>Please select an option</option>
+                                    <option value="buyer">Buyer</option>
+                                    <option value="seller">Seller</option>
+                                </select>
                             </FormGroup>
-
+                                <br/>
                             <Button className="btn-block" variant="outline-success" type="submit">
                                 {'Sign Up'} </Button>
                             <div className="text-center">
                                 Already have an account? <Link className="already" to="/login"> Log in</Link>
                             </div>
-
                         </Form>
+                        <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
                     </div>
                 </div>
             </div>

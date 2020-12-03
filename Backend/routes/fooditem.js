@@ -119,25 +119,31 @@ router.post("/add", upload.single('productImage'), async (req, res, next) => {
 
 });
 
+router.get("/seller/:sellername", (req, res, next) => {
+  const sellername = req.params.sellername;
+  console.log(sellername);
+  console.log(req);
+  FoodItem.find({chefname:sellername})
+    .then(doc => {
+      console.log("From database", doc);
+      res.json(doc);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });
+});
+
 router.get("/:productId", (req, res, next) => {
   const id = req.params.productId;
   FoodItem.findById(id)
-    .select('chefname price _id productImage')
-    .exec()
     .then(doc => {
       console.log("From database", doc);
-      if (doc) {
-        res.status(200).json({
-            fooditems: doc,
-            request: {
-                type: 'GET',
-                url: 'http://localhost:3000/fooditems'
-            }
-        });
-      } else {
-        res
-          .status(404)
-          .json({ message: "No valid entry found for provided ID" });
+      if(doc){
+        res.json(doc);
+      }
+      else{
+        res.json("ITEM NOT FOUND");
       }
     })
     .catch(err => {
@@ -179,7 +185,7 @@ router.delete("/:productId", (req, res, next) => {
       res.status(200).json({
           message: 'Product deleted',
           request: {
-              type: 'POST',
+              type: 'DELETE',
               url: 'http://localhost:3000/fooditems',
               body: { name: 'String', price: 'Number' }
           }

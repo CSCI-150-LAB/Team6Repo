@@ -31,7 +31,7 @@ import rulespage from "./components/rulespage";
 
 import Meals from './components/meals';
 import Carousel from './components/carousel';
-
+import sellerDishes from './components/sellerdishview';
 import { Provider } from "react-redux";
 import store from "./components/store/store";
 import foodreviewComponent from './components/foodreview.component';
@@ -81,11 +81,12 @@ function App() {
         <Route path = "/maindishes" exact component = {MainDishes} />
         <Route exact path = "/tstupload" exact component = {FoodUpload} />
         <Route path = '/review/:id' component = {reviews} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
+        <Route path="/register" exact component={Register} />
+        <Route path="/login" exact component={Login} />
         <Route path = "/testsearch" exact component = {CreateSearchQuery} />
         <Route path = "/testsearch/:search" component = {CreateSearchQuery} />
         <Route path = "/myfoodcart" exact component = {foodCart} />
+        <Route path = "/viewyourdishes" exact component = {sellerDishes} />
         <Switch>
               <PrivateRoute exact path="/landingPage" component={landingPage} />
               
