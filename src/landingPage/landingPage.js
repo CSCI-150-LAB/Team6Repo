@@ -1,9 +1,9 @@
-import React, { Component, useState, Fragment } from "react";
+import React, { Component} from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../components/actions/authActions";
 import "../App.css";
-import defaultProfilePic from "../imagesForMain/profilepic.png"; 
+//import defaultProfilePic from "../imagesForMain/profilepic.png"; 
 
 class landingPage extends Component {
   onLogoutClick = e => {
@@ -14,6 +14,8 @@ class landingPage extends Component {
   
 render() {
     const { user } = this.props.auth;
+
+
 return (
       <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
