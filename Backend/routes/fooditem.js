@@ -83,7 +83,6 @@ router.post("/add", upload.single('productImage'), async (req, res, next) => {
     productImageType: req.file.mimetype.substring(6,req.file.mimetype.length),
     //productImage: req.file.path
   });
-    console.log("here")
     //const uploadedResponse = await cloudinary.uploader.upload(req.body.data,{upload_preset: 'AuthenticChef'});
     //console.log(uploadedResponse.url);
     fooditem
