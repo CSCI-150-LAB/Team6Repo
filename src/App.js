@@ -14,9 +14,9 @@ import Register from "./components/register/register";
 import Login from "./components/login/login";
 import PrivateRoute from "./privateRoutes/privateRoute";
 import landingPage from "./landingPage/landingPage"
-import Profile from "./landingPage/profile";
+//import Profile from "./landingPage/profile";
 import contactus from "./components/contactus"; 
-import MainDishes from "./components/maindishes"; 
+import MainDishes from "./components/maindishesupdated"; 
 import FoodUpload from "./components/food-upload.component";
 import reviews from "./components/foodreview.component"; 
 import CreateSearchQuery from "./components/food_search_component";
@@ -88,7 +88,7 @@ function App() {
         <Route path = "/myfoodcart" exact component = {foodCart} />
         <Switch>
               <PrivateRoute exact path="/landingPage" component={landingPage} />
-              <PrivateRoute exact path="/profile" component={Profile} />
+              
 
         </Switch>
         
