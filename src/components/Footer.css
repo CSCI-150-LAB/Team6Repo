@@ -14,3 +14,11 @@ li a
 {
     color:white;
 }
+.subs{
+    width: 400px;
+    margin-left: 600px;
+}
+.subbtn{
+    margin-left: 900px;
+    justify-content: left;
+}

@@ -57,6 +57,9 @@ input {
 .footerfix{
  height: 500px;
 }
+.form-fix{
+  margin-top: 100px;
+}
 th div{
   color: white;
 }

@@ -120,6 +120,7 @@ class MainDishes extends Component{
   render() {
     return (
       <>
+      <div className="form-fix">
         <br />
         <h1 className="text-center">
           <b>Popular Dishes</b>
@@ -132,7 +133,7 @@ class MainDishes extends Component{
               {this.state.fooditems.length > 1 && this.state.trash2}
               {this.state.fooditems.length > 2 && this.state.trash3}
         </Row>
-
+</div>
         </>
     )
   }

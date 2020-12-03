@@ -125,8 +125,9 @@ class foodCart extends Component {
 
   render() {
     return (
+      
       <div className="pb-5">
-        <div className="container">
+        <div className="container form-fix">
           <div className="row">
             <div className="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
               <h3 className="text-uppercase">

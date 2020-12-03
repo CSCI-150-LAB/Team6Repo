@@ -96,7 +96,7 @@ function App() {
         <footer>
         <Route exact path="/privacypolicy" component={privacypolicy} /> 
         <Route exact path="/ourstory" component={ourstory} /> 
-        <Route exact path="/contactus" component={contactus} /> 
+        {/* <Route exact path="/contactus" component={contactus} />  */}
         <Route exact path="/rulespage" component={rulespage} />
           <Footer/>
         </footer>

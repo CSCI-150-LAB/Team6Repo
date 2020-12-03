@@ -102,12 +102,11 @@ render() {
 
     
     return(
-    <Navbar className="navcolor" expand="lg">
+    <Navbar fixed="top" className="navbar" expand="lg">
       <Navbar.Brand href= "http://localhost:3000/home">
       <img
         src={Logo}
         width="30%"
-        
         className="d-inline-block align-top"
         alt="AuthenticChef"
       />
