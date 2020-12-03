@@ -83,8 +83,9 @@ router.post("/add", upload.single('productImage'), async (req, res, next) => {
     productImageType: req.file.mimetype.substring(6,req.file.mimetype.length),
     //productImage: req.file.path
   });
-    const uploadedResponse = await cloudinary.uploader.upload(req.body.data,{upload_preset: 'AuthenticChef'});
-    console.log(uploadedResponse.url);
+    console.log("here")
+    //const uploadedResponse = await cloudinary.uploader.upload(req.body.data,{upload_preset: 'AuthenticChef'});
+    //console.log(uploadedResponse.url);
     fooditem
     .save()
     .then(result => {
@@ -101,7 +102,7 @@ router.post("/add", upload.single('productImage'), async (req, res, next) => {
             productImage: result.productImage,
             request: {
                 type: 'GET',
-                url: uploadedResponse.url
+                url: ""
             }
         }
       });
@@ -122,7 +123,6 @@ router.post("/add", upload.single('productImage'), async (req, res, next) => {
 router.get("/seller/:sellername", (req, res, next) => {
   const sellername = req.params.sellername;
   console.log(sellername);
-  console.log(req);
   FoodItem.find({chefname:sellername})
     .then(doc => {
       console.log("From database", doc);
