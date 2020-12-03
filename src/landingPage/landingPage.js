@@ -1,81 +1,85 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../components/actions/authActions";
 import "../App.css";
-//import defaultProfilePic from "../imagesForMain/profilepic.png"; 
+import Button from "react-bootstrap/Button";
+import { Row, Col } from "reactstrap";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+//import defaultProfilePic from "../imagesForMain/profilepic.png";
+import UserDP from "../imagesForMain/profilepic.png";
+// import { Table, Badge } from "reactstrap";
 
 class landingPage extends Component {
-  onLogoutClick = e => {
+  onLogoutClick = (e) => {
     e.preventDefault();
     this.props.logoutUser();
-    window.location = '/home';
+    window.location = "/home";
   };
-  
-render() {
+
+  render() {
     const { user } = this.props.auth;
 
+    return (
+      <div style={{ height: "75vh" }} className="container form-fix">
+        <Row>
+          <Col>
+            <span>
+              <img className="userdp" src={UserDP} alt="Ronaldo" />
+            </span>
+          </Col>
 
-return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
-          <div className="col s12 center-align">
-            <h4>
-              <b>Hey there, </b> {user.name.split(" ")[0]}
-              <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
+          <Col xs={6} md={6}>
+            <h4 className="text-center">
+              <b>Welcome, </b> {user.name.split(" ")[0]}. You are now logged in.
             </h4>
-            <h4>
-            <b>Your role is: </b> {user.role}
-            <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            <h4>
-            <b>Address: </b> {user.address}
-            <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            <h4>
-            <b>Phone Number: </b> {user.phone_number}
-            <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            <h4>
-            <b>Email: </b> {user.email}
-            <p className="flow-text grey-text text-darken-1">
-                <span style={{ fontFamily: "monospace" }}></span>
-              </p>
-            </h4>
-            <button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem"
-              }}
-              onClick={this.onLogoutClick}   
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+          </Col>
+          <Col xs={2} md={2}>
+            <Nav className="ml-auto">
+              <Nav.Link className="already" href="profile">
+                View {user.role} Profile
+              </Nav.Link>
+            </Nav>
+          </Col>
+          <Col xs={1} md={1} margin-right="50px">
+            <Button
+              className="btn-lg text-center"
+              variant="outline-success"
+              type="submit"
+              onClick={this.onLogoutClick}
             >
-              Logout
-            </button>
-          </div>
-        </div>
+              {"Logout "}{" "}
+            </Button>
+          </Col>
+        </Row>
+        <Row className="align-items-start p-2 my-details rounded">
+          <Col>
+          <h3 className = "font-details">
+          <b>Role: </b> {user.role}
+        </h3>
+        <h3>
+          <b>Address: </b> {user.address}
+        </h3>
+        <h3>
+          <b>Phone Number: </b> {user.phone_number}
+        </h3>
+        <h3>
+          <b>Email: </b> {user.email}
+        </h3>
+          </Col>
+        </Row>
+        
       </div>
     );
   }
 }
 landingPage.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(landingPage);
+export default connect(mapStateToProps, { logoutUser })(landingPage);
