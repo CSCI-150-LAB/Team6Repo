@@ -55,17 +55,12 @@ router.post("/makecart/:userID", (req, res,next) => {
     );
 });
 
+
 router.post("/addtocart/:userID", (req, res,next) => {
     const userID = req.params.userID;
     const fooditemID = req.body.fooditem;
-    /*
-    cart.findById(userID).then(result => {
-      if(result.foodItems.length == 0){
-        cart.insert
-      }
-
-
-    })*/
+  
+  
     cart.findOne({_id:userID}).then(checkC =>{
       if(checkC){
         FoodItem.findById(fooditemID).select('chefname price _id description foodname ethnicity').exec().then(result => {
@@ -104,6 +99,7 @@ router.post("/addtocart/:userID", (req, res,next) => {
       }
     })
 });
+
   router.post("/:foodid", (req, res,next) => {
     const foodName = req.body._id;
     console.log(foodName);
@@ -111,6 +107,28 @@ router.post("/addtocart/:userID", (req, res,next) => {
     .select("price")
     .then(foodprice => res.json(foodprice))
     .catch(err => res.status(420).json(err));
+  });
+  router.delete("/deletecart/:userID", (req, res,next) => {
+    const userID = req.params.userID;
+    cart.findByIdAndDelete(userID).then(result => {
+      console.log(result);
+      res.json("cart deleted");
+    }).catch(err => {
+      console.log("error uh oh");
+      res.status(500).json({message:"Shit don't work",err:err});
+    });
+    /*
+    cart.aggregate([
+      {$match:{userID:userID}},
+      {$set:{foodItems: {$concatArrays:["$foodItems",[result]]}}},
+      {$set}
+      ]).then(result2 =>{
+
+    }).catch(err => {
+      console.log(err);
+      res.status(500).json({ error: err });
+    });*/
+
   });
   router.delete("/deletefood/:foodid", (req, res,next) => {
     const userID = req.params.userID;

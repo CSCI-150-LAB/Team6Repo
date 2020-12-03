@@ -146,7 +146,7 @@ class FoodUpload extends Component{
               <Label>File </Label>
               <Input type = "file" className="form-control-file" onChange = {this.fileSelectedHandler}/>
             </FormGroup>   
-            <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.fileUploadHandler}> {'Upload'} </Button> 
+            <Button type = "upload" className="btn-block" variant="outline-success" onClick = {this.onSubmit}> {'Upload'} </Button> 
             <div>
 
               {this.state.imageData && (<img src= {this.state.imageData} alt = "chosen" style = {{height:'300px'}} />)}

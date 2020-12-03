@@ -40,7 +40,7 @@ const Test = props =>(
             <br/>
             Price: $ {props.food.price}
           </Card.Text>
-          <Button variant="success" onClick = {() => {props.addToCart(props.food._id)}}>Add to cart</Button>
+          <Button variant="success" onClick = {() => { alert("Item added to cart"); props.addToCart(props.food._id);}}>Add to cart</Button>
         </Card.Body>
       </Card>
     </Col>
