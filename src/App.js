@@ -70,6 +70,8 @@ function App() {
         <Nav />
         <br/>
         <br/>
+        <br/>
+        <br/>
    
         <Route path = "/home" exact component = {Carousel} /> 
         <Route path = "/home" exact component = {Meals} />
