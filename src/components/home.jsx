@@ -15,11 +15,11 @@ import Carousel from 'react-bootstrap/Carousel';
 //import Button from 'react-bootstrap/Button';
 
 function home(){
-    return(
+    return( 
         <Carousel>
+             
             <Carousel.Item>
                 <video ref = "vid1" src = {video1} type= "video/mp4">
-
                 </video>
                 <Carousel.Caption>
                 <h1>Indian Food</h1>
@@ -51,7 +51,7 @@ function home(){
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
-
+        
     );
 }
 export default home;

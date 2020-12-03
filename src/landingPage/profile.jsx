@@ -3,6 +3,9 @@ import React from 'react';
 //import UserDP from "../imagesForMain/ronaldo.jpg";
 import { Row, Col, Table, Badge } from "reactstrap";
 
+render() {
+  const { user } = this.props.auth;
+
 const Example = () => {
     return (
       <div>
@@ -13,7 +16,7 @@ const Example = () => {
               </span>
             </Col>
             <Col>
-            <h5 class="text-center">Ratings: ★★★★★</h5>
+            
             </Col>
           </Row>
           <Row>
@@ -56,5 +59,6 @@ const Example = () => {
       
     );
   };
+
   
   export default Example;
