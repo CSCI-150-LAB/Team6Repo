@@ -3,14 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../components/actions/authActions";
 import "../App.css";
-import Button from "react-bootstrap/Button";
-import { Row, Col } from "reactstrap";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-//import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import FormControl from "react-bootstrap/FormControl";
+import defaultProfilePic from "../imagesForMain/profilepic.png"; 
 
 class landingPage extends Component {
   onLogoutClick = e => {
@@ -26,6 +19,9 @@ return (
         <div className="row">
           <div className="col s12 center-align">
             <h4>
+            <img> 
+          src = {defaultProfilePic}
+        </img>
               <b>Hey there, </b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
                 <span style={{ fontFamily: "monospace" }}></span>

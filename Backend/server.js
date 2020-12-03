@@ -22,7 +22,7 @@ app.use(express.json());
 //Image Upload
 app.use(morgan("dev"));
 app.use('/fooditems', express.static('uploads'));
-app.use(bodyParser.urlencoded({ extended: false }));
+
 
 
 app.use((req, res, next) => {
@@ -46,7 +46,10 @@ app.use('/routes/users', users);
 
 const adminRouter = require('./routes/admin');
 app.use('/admin', adminRouter); 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+
 const postRoute = require('./routes/posts'); 
 app.use('/routes/posts', postRoute); 
 
@@ -68,11 +71,6 @@ cloudinary.config({
 });
 
 
-
-
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 // mongoDB connection
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
