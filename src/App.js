@@ -14,6 +14,7 @@ import Register from "./components/register/register";
 import Login from "./components/login/login";
 import PrivateRoute from "./privateRoutes/privateRoute";
 import landingPage from "./landingPage/landingPage"
+import Profile from "./landingPage/profile";
 import contactus from "./components/contactus"; 
 import MainDishes from "./components/maindishes"; 
 import FoodUpload from "./components/food-upload.component";
@@ -87,6 +88,8 @@ function App() {
         <Route path = "/myfoodcart" exact component = {foodCart} />
         <Switch>
               <PrivateRoute exact path="/landingPage" component={landingPage} />
+              <PrivateRoute exact path="/profile" component={Profile} />
+
         </Switch>
         
         <footer>

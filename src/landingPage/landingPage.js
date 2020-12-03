@@ -1,7 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../components/actions/authActions";
+import "../App.css";
+import Button from "react-bootstrap/Button";
+import { Row, Col } from "reactstrap";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+//import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+
 class landingPage extends Component {
   onLogoutClick = e => {
     e.preventDefault();
