@@ -34,7 +34,7 @@ const Test = props =>(
     </Card>
   </Col>
 )
-class dishes extends Component{
+class MainDishes extends Component{
     
   constructor(props){
       super(props);
@@ -418,7 +418,7 @@ function MainDishes() {
 }
 */
 
-dishes.propTypes = {
+MainDishes.propTypes = {
   auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
@@ -426,4 +426,4 @@ const mapStateToProps = state => ({
 });
 export default connect(
   mapStateToProps
-)(dishes);
+)(MainDishes);

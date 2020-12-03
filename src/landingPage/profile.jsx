@@ -1,7 +1,7 @@
 import "../App.css";
 import React from 'react';
 import Button from "react-bootstrap/Button";
-import UserDP from "../imagesForMain/ronaldo.jpg";
+//import UserDP from "../imagesForMain/ronaldo.jpg";
 import { Row, Col, Table, Badge, Media } from "reactstrap";
 
 const Example = () => {
@@ -10,7 +10,7 @@ const Example = () => {
           <Row>
             <Col>
             <span>
-                <img className="userdp" src={UserDP} alt="Ronaldo" />
+                <img className="userdp" /*src={UserDP}*/ alt="Ronaldo" />
               </span>
             </Col>
             <Col>

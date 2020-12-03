@@ -130,7 +130,7 @@ router.post("/addtocart/:userID", (req, res,next) => {
     });*/
 
   });
-  router.delete("/deletefood/:foodid", (req, res,next) => {
+  router.post("/deletefood/:foodid", (req, res,next) => {
     const userID = req.params.userID;
     const fooditemID = req.body.fooditem;
     /*

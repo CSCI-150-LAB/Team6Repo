@@ -25,7 +25,7 @@ class FoodPage extends Component {
                 <>
                 <br />
                 <h1 className="text-center">
-                    <b>Popular Dishes</b>
+                    <b>Food item</b>
                 </h1>
                 <h3 className="text-center">Food experience with locals</h3>
                 <hr className="hrline" />
