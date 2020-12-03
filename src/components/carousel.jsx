@@ -18,7 +18,7 @@ function carousel(){
         <Carousel>
             <Carousel.Item>
                 
-            <video width="1700" height="600" controls autoPlay muted loop>
+            <video width="2500" height="600" controls autoPlay muted loop>
                 <source src={video1} type="video/mp4"></source>
             </video>
 
@@ -27,7 +27,7 @@ function carousel(){
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-            <video width="1700" height="600" controls autoPlay muted loop>
+            <video width="2500" height="600" controls autoPlay muted loop>
                 <source src={video2} type="video/mp4"></source>
             </video>
 
@@ -36,7 +36,7 @@ function carousel(){
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
-            <video width="1700" height="600" controls autoPlay muted loop>
+            <video width="2500" height="600" controls autoPlay muted loop>
                 <source src={video3} type="video/mp4"></source>
             </video>
 
