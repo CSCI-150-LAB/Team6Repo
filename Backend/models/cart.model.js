@@ -25,7 +25,7 @@ const cartSchema = new Schema({
   
     foodItems: [{type: Object}],
 
-    testing: {type: Array,required: true, default: [{}]}
+    testing: {type: Array,required: true, default: []}
   }, {
     timestamps: true,
   });

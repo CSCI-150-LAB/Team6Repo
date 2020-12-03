@@ -133,17 +133,29 @@ router.post("/addtocart/:userID", (req, res,next) => {
   router.post("/deletefood/:foodid", (req, res,next) => {
     const userID = req.params.userID;
     const fooditemID = req.body.fooditem;
-    /*
-    cart.aggregate([
-      {$match:{userID:userID}},
-      {$set:{foodItems: {$concatArrays:["$foodItems",[result]]}}},
-      {$set}
-      ]).then(result2 =>{
+    cart.findById(userID).then(result => {
+      console.log(result);
+      res.json("found it");
+    });
+    
 
-    }).catch(err => {
-      console.log(err);
-      res.status(500).json({ error: err });
-    });*/
-
+  });
+  router.post("/addfood/:userID", (req, res,next) => {
+    const userID = req.params.userID;
+    const fooditemID = req.body.fooditem;
+    FoodItem.findById(fooditemID).select('chefname price _id description foodname ethnicity').exec().then(result => {
+      console.log("Found the Item!");
+      console.log(result);
+      cart.aggregate([
+        {$match:{userID:userID}},
+        {$set:{foodItems: {$concatArrays:["$foodItems",[result]]}}}]
+        ).then(result2 =>{
+          console.log(result2);
+          res.json("coolio");
+      }).catch(err => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
+    });
   });
   module.exports = router; 
