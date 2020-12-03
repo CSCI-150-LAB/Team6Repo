@@ -23,7 +23,7 @@ class foodCart  extends Component{
     constructor(props){ 
         super(props); 
         
-        this.deleteFoodItem = this.deleteFoodItem.bind(this);
+        //this.deleteFoodItem = this.deleteFoodItem.bind(this);
         this.state ={
           userCart: '',
           fooditems:[],
@@ -33,6 +33,7 @@ class foodCart  extends Component{
         }
     }
 
+    
     componentDidMount(){
       console.log(this.props.auth);
       axios.get("http://localhost:5000/foodcart/getcart/"+ this.props.auth.user.id,{username:this.props.auth.user.name}).then(response =>{
@@ -44,32 +45,35 @@ class foodCart  extends Component{
           for(var i = 0; i < response.data.foodItems.length; i++){
             temp = response.data.foodItems[i].price + temp;
           }
-          const currentPrice = temp;
+         
           var tax = (temp * 0.07);
           tax = Math.floor(tax * 100) / 100; 
-          const newPrice = currentPrice + tax; 
           this.setState({tax:tax});
           this.setState({price:temp});
         }
       });
-
-
     }
+    
     deleteFoodItem(foodID){
-
+      //axios.delete("http://localhost:5000/foodcart/deletefromcart/" + this.props.auth.user.id,{})
     }
-    onSubmit= e => {  
+  onSubmit= e => {  
         e.preventDefault(); 
         console.log(e.value);
     };
-
+  deleteCart = e =>{
+      axios.delete("http://localhost:5000/foodcart/deletecart/"+ this.props.auth.user.id).then(() => { 
+        console.log("cart has been deleted");
+      });
+    }
   foodList() {
     return this.state.fooditems.map(currentfood => {
       return <FoodItems fooditem={currentfood} key={currentfood._id} deleteFoodItem = {this.deleteFoodItem}/>;
     })
   }
-  doPrice(){
 
+  refreshPage() { 
+    window.location.reload(true); 
   }
  
   render() {
@@ -93,17 +97,21 @@ class foodCart  extends Component{
         <h2>Price: ${this.state.price}</h2>
         <h2>Tax: ${this.state.tax}</h2>
         <h2>Total Price: ${this.state.price + this.state.tax}</h2>
+       
 
         <PayPalButton 
           amount = {this.state.price + this.state.tax}
           onSuccess={(details, data) =>{
             alert("Transaction completed by " + this.props.auth.user.name);
-
-            
+            this.deleteCart();
+            this.refreshPage(); 
+          }}
+          options={{
+            clientId: "AfX37SWBIHQyn3WOrVxzbNg3fvq5kAnUpEqhG7CHqUvc8Mla5po49GJWuLblE1X1Ybs9hIpHF3JjVulX",
+            merchantId: "698584Y22ED8E", 
+            currency: "USD"
           }}
         />
-
-
       </div>
       
     );
