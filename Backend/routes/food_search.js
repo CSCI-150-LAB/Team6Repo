@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/sponsored", (req, res, next) => {
-  FoodItem.find().then(fooditem => res.json(fooditem)).catch(err => res.status(420).json(err));
+  FoodItem.find({sponsored:true}).then(fooditem => res.json(fooditem)).catch(err => res.status(420).json(err));
 });
 router.get("/dishespage", (req, res, next) => {
   FoodItem.find().limit(9).then(fooditem => res.json(fooditem)).catch(err => res.status(420).json(err));

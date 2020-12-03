@@ -19,14 +19,7 @@ const FoodItems = (props) => (
     <td className="border-0 align-middle">{props.fooditem.chefname}</td>
     <td className="border-0 align-middle">${props.fooditem.price}</td>
     <td className="border-0 align-middle">
-      <a
-        href="#"
-        onClick={() => {
-          props.deleteFoodItem(props.fooditem._id);
-        }}
-      >
-        Delete
-      </a>
+    <Button onClick={() => { props.deleteFoodItem(props.fooditem._id) }}>delete</Button>
     </td>
   </tr>
 );
@@ -35,15 +28,17 @@ class foodCart extends Component {
   constructor(props) {
     super(props);
 
-    //this.deleteFoodItem = this.deleteFoodItem.bind(this);
-    this.state = {
-      userCart: "",
-      fooditems: [],
-      price: 0,
-      tax: 0,
-      foodlist: [],
-    };
-  }
+    constructor(props){ 
+        super(props);
+        this.deleteFoodItem = this.deleteFoodItem.bind(this);
+        this.state ={
+          userCart: '',
+          fooditems:[],
+          price: 0,
+          tax: 0,
+          foodlist:[]
+        }
+    }
 
   componentDidMount() {
     console.log(this.props.auth);
@@ -68,21 +63,32 @@ class foodCart extends Component {
           this.setState({ price: temp });
         }
       });
-  }
-
-  deleteFoodItem(foodID) {
-    //axios.delete("http://localhost:5000/foodcart/deletefromcart/" + this.props.auth.user.id,{})
-  }
-  onSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.value);
-  };
-  deleteCart = (e) => {
-    axios
-      .delete(
-        "http://localhost:5000/foodcart/deletecart/" + this.props.auth.user.id
-      )
-      .then(() => {
+    }
+    
+    deleteFoodItem(foodID){
+      
+      axios.post("http://localhost:5000/foodcart/deletefromcart/" + this.props.auth.user.id,{fooditem:foodID}).then(response =>{
+        console.log(response.data);
+      });
+      this.setState({
+        fooditems: this.state.fooditems.filter(el => el._id !== foodID)
+      })
+      var temp=0;
+      for(var i = 0; i < this.state.fooditems.length; i++){
+        temp = this.state.fooditems[i].price + temp;
+      }
+     
+      var tax = (temp * 0.07);
+      tax = Math.floor(tax * 100) / 100; 
+      this.setState({tax:tax});
+      this.setState({price:temp});
+    }
+  onSubmit= e => {  
+        e.preventDefault(); 
+        console.log(e.value);
+    };
+  deleteCart = e =>{
+      axios.delete("http://localhost:5000/foodcart/deletecart/"+ this.props.auth.user.id).then(() => { 
         console.log("cart has been deleted");
       });
   };

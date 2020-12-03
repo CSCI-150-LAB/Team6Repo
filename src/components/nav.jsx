@@ -50,6 +50,7 @@ render() {
       <Fragment>
          <Nav className="ml-auto">
          <Nav.Link href="http://localhost:3000/tstupload" hidden = {this.state.role === "buyer"}>Add a dish</Nav.Link>
+         <Nav.Link href="http://localhost:3000/viewyourdishes" hidden = {this.state.role === "buyer"}>View Your Dishes</Nav.Link>
         <Nav.Link href="http://localhost:3000/landingPage">Profile</Nav.Link>
         <Nav.Link href="http://localhost:3000/myfoodcart">Cart</Nav.Link>
         <Nav.Link href="http://localhost:3000/maindishes">Dishes</Nav.Link>

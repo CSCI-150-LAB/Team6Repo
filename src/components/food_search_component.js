@@ -75,14 +75,13 @@ class CreateSearchQuery  extends Component{
       const userID = this.props.auth.user.id;
       if(this.props.auth.isAuthenticated){
         console.log("THIS FAR");
-        axios.post("http://localhost:5000/foodcart/addtocart/"+ userID,{fooditem:foodID}).then(response =>{
+        axios.post("http://localhost:5000/foodcart/addtocart/"+ userID,{fooditem:foodID,username:this.props.auth.user.name}).then(response =>{
           console.log("ADDED!");
         });
       }
       else{
         alert("REGISTER YOU NUMnUTS. LOL JK.");
       }
-      
     }
     
     componentDidMount(){
@@ -97,8 +96,6 @@ class CreateSearchQuery  extends Component{
           }
           this.foodList();
       });
-      
-      
     }
     debugpurp = e =>{
       console.log(this);

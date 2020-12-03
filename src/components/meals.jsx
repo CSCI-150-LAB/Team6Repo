@@ -8,14 +8,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-import Food1 from "../imagesForMain/cards/1.jpeg";
-import Food2 from "../imagesForMain/cards/2.png";
-import Food3 from "../imagesForMain/cards/3.png";
-import Food4 from "../imagesForMain/cards/4.jpg";
-import Food5 from "../imagesForMain/cards/5.jpg";
-
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+
 const Test = props =>(
   <Col>
     <Card style={{ width: "30rem" }} className="first-col">
@@ -63,7 +58,7 @@ class meals extends Component {
       const userID = this.props.auth.user.id;
       if(this.props.auth.isAuthenticated){
         console.log("THIS FAR");
-        axios.post("http://localhost:5000/foodcart/addtocart/"+ userID,{fooditem:foodID}).then(response =>{
+        axios.post("http://localhost:5000/foodcart/addtocart/"+ userID,{fooditem:foodID,username:this.props.auth.user.name}).then(response =>{
           console.log("ADDED!");
         });
       }
